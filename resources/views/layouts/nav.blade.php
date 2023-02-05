@@ -447,13 +447,13 @@
                             <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                                 aria-current="page">Home</a>
 
-                            <a href="#"
-                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Movies</a>
+                            <a href="/movies"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md ">Movies</a>
 
-                            <a href="#"
+                            <a href="/tv-series"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">TV Series</a>
 
-                            <a href="#"
+                            <a href="/actres"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Actres</a>
                         </div>
                     </div>
@@ -462,7 +462,7 @@
                     <div>
                         <button type="submit"
                             class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Sign in
+                            <a href="/login">Sign in</a>
                         </button>
                     </div>
                 @endguest

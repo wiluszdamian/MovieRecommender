@@ -37,8 +37,6 @@ class MovieController extends Controller
         $actorResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/credits?api_key={$apiKey}&language=en-US");
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
-
-        session()->flash('message', 'Post successfully updated.');
         
         return view('pages.show', [
             'movie' => $movie,

@@ -19,12 +19,13 @@ use App\Http\Controllers\Auth;
 | AUTH
 |--------------------------------------------------------------------------
 */
-Route::get('/user-register', [Auth\RegisterController::class,'index'])->name('register');
-Route::get('/user-register', [Auth\RegisterController::class,'HandleRegister']);
-Route::get('/user-login', [Auth\LoginController::class,'index'])->name('login');
-Route::get('/user-login', [Auth\LoginController::class,'HandleLogin']);
-Route::get('/verify/{token}', [Auth\VerifyController::class,'VerifyEmail'])->name('verify');
-
+Route::get('login', [Auth\AuthController::class, 'index'])->name('login');
+Route::post('post-login', [Auth\AuthController::class, 'postLogin'])->name('login.post'); 
+Route::get('register', [Auth\AuthController::class, 'registration'])->name('register');
+Route::post('post-registration', [Auth\AuthController::class, 'postRegistration'])->name('register.post'); 
+Route::get('logout', [Auth\AuthController::class, 'logout'])->name('logout');
+Route::get('dashboard', [Auth\AuthController::class, 'dashboard'])->middleware(['auth', 'verify_email']); 
+Route::get('account/verify/{token}', [Auth\AuthController::class, 'verifyAccount'])->name('user.verify'); 
 
 /*
 |--------------------------------------------------------------------------
