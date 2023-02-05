@@ -29,8 +29,14 @@ class MovieController extends Controller
         $movieResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}?api_key=32193d189ceb2101de9ed98317acd250&language=en-US");
         $movie = json_decode($movieResponse->getBody(), true);
 
+        // Get actors information in the movie with the given ID
+        $actorResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/credits?api_key=32193d189ceb2101de9ed98317acd250&language=en-US");
+        $actors = json_decode($actorResponse->getBody(), true)['cast'];
+        $actors = array_slice($actors, 0, 10);
+
         return view('show', [
-            'movie' => $movie
+            'movie' => $movie,
+            'actors' => $actors,
         ]);
     }
 }

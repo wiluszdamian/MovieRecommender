@@ -392,180 +392,147 @@
 
 </head>
 
-<body class="antialiased" style="margin-left: 5%; margin-right: 5%;">
-<nav class="bg-white border-gray-200 px-2 md:px-4 py-2.5 dark:bg-gray-900">
-    <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
-        <a href="/" class="flex items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" class="h-6 mr-3 sm:h-9" alt="Logo" />
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">MovieRecommender</span>
-        </a>
-        <div class="flex items-center md:order-2">
-            <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Login</a>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Sign up</a>
-            <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-            </button>
-        </div>
-        <div id="mega-menu" class="items-center justify-between hidden w-full text-sm md:flex md:w-auto md:order-1">
-            <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
-                <li>
-                    <a href="#" class="block py-2 pl-3 pr-4 text-blue-600 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
-                </li>
-                <li>
-                    <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                        Movies <svg aria-hidden="true" class="w-5 h-5 ml-1 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+<body class="bg-gray-800 antialiased">
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button"
+                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!--
+                  Icon when menu is closed.
+      
+                  Heroicon name: outline/bars-3
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!--
+                  Icon when menu is open.
+      
+                  Heroicon name: outline/x-mark
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </button>
-                    <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
-                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Library
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Resources
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Pro Version
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-4">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Newsletter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Playground
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        License
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 text-gray-900 dark:text-white">
-                            <ul class="space-y-4">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Support Center
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Terms
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <img class="block h-8 w-auto lg:hidden"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png"
+                            alt="MovieRecommender - Laravel App">
+                        <img class="hidden h-8 w-auto lg:block"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png"
+                            alt="MovieRecommender - Laravel App">
                     </div>
-                </li>
-                <li>
-                    <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
-                        Movies <svg aria-hidden="true" class="w-5 h-5 ml-1 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                    <div id="mega-menu-dropdown" class="absolute z-10 grid hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700">
-                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-4" aria-labelledby="mega-menu-dropdown-button">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Library
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Resources
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Pro Version
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                            <ul class="space-y-4">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Newsletter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Playground
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        License
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="p-4 text-gray-900 dark:text-white">
-                            <ul class="space-y-4">
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Support Center
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Terms
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                                aria-current="page">Home</a>
 
-    <div class="content">
+                            <a href="#"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Movies</a>
+
+                            <a href="#"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">TV Series</a>
+
+                            <a href="#"
+                                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Actres</a>
+                        </div>
+                    </div>
+                </div>
+                @guest
+                    <div>
+                        <button type="submit"
+                            class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                            Sign in
+                        </button>
+                    </div>
+                @endguest
+                @auth     
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button type="button"
+                        class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span class="sr-only">View notifications</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                        </svg>
+                    </button>
+
+
+                    <!-- Profile dropdown -->
+                    <div class="relative ml-3">
+                        <div>
+                            <button type="button"
+                                class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full"
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="">
+                            </button>
+                        </div>
+                        <!--
+                      Dropdown menu, show/hide based on menu state.
+          
+                      Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                      Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+                        <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <!-- Active: "bg-gray-100", Not Active: "" -->
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-0">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-1">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            @endauth
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                    aria-current="page">Dashboard</a>
+
+                <a href="#"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
+
+                <a href="#"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
+
+                <a href="#"
+                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content" style="margin-left: 20%; margin-right: 20%;">
         @yield('content')
     </div>
 

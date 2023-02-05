@@ -2,10 +2,10 @@
 @section('title', 'Home')
 
 @section('content')
-<p class="medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">Most Popular Movies</p>
+<p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">Most Popular Movies</p>
 <div class="popularMovies" style="display: flex;">
 @foreach ($popularMovies as $movie)
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="display: flex; flex-direction: column; width: 20%;">
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="display: flex; flex-direction: column; width: 20%; margin: 0.5%">
     <a href="#">
         <img class="rounded-t-lg" src="https://image.tmdb.org/t/p/w300{{ $movie['poster_path'] }}" alt="{{ $movie['title'] }}" />
     </a>
