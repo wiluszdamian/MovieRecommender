@@ -5,11 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MovieRecommender - @yield('title')</title>
+    <title>@yield('title')</title>
+
+    <!-- Icon -->
+    <link rel = "icon" href = 
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" 
+    type = "image/x-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
+    @livewireStyles
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -535,7 +540,7 @@
     <div class="content" style="margin-left: 20%; margin-right: 20%;">
         @yield('content')
     </div>
-
+    @livewireScripts
 </body>
 
 </html>

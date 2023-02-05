@@ -2,6 +2,11 @@
 @section('title', 'test')
 
 @section('content')
+@if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
 <div class="bg-gray-800">
     <div class="pt-6">
       <!-- Image gallery -->

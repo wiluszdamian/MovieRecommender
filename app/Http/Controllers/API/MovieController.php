@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
+use Illuminate\Routing\Controller;
 
 class MovieController extends Controller
 {
@@ -36,9 +38,12 @@ class MovieController extends Controller
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
 
-        return view('show', [
+        session()->flash('message', 'Post successfully updated.');
+        
+        return view('pages.show', [
             'movie' => $movie,
             'actors' => $actors,
         ]);
+
     }
 }

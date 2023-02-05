@@ -2,6 +2,9 @@
 @section('title', 'Home')
 
 @section('content')
+@if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+@endif
 <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">Most Popular Movies</p>
 <div class="popularMovies" style="display: flex;">
 @foreach ($popularMovies as $movie)

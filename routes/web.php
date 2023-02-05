@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\TvShowsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MovieController;
-
+use App\Http\Controllers\API;
+use App\Http\Controllers\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +14,22 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', [MovieController::class, 'index']);
-Route::get('/movies/{id}', [MovieController::class, 'show']);
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+Route::get('/user-register', [Auth\RegisterController::class,'index'])->name('register');
+Route::get('/user-register', [Auth\RegisterController::class,'HandleRegister']);
+Route::get('/user-login', [Auth\LoginController::class,'index'])->name('login');
+Route::get('/user-login', [Auth\LoginController::class,'HandleLogin']);
+Route::get('/verify/{token}', [Auth\VerifyController::class,'VerifyEmail'])->name('verify');
+
+
+/*
+|--------------------------------------------------------------------------
+| BASE
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [API\MovieController::class, 'index']);
+Route::get('/movies/{id}', [API\MovieController::class, 'show']);
