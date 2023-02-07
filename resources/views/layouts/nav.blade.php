@@ -287,6 +287,10 @@
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
 
+        .dropdown-nav {
+            display: none;
+        }
+
         @media (min-width:640px) {
             .sm\:rounded-lg {
                 border-radius: .5rem
@@ -484,7 +488,7 @@
                     <div class="relative ml-3">
                         <div>
                             <button type="button"
-                                class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                class="button-nav flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="sr-only">{{ __('message.open_user_menu') }}</span>
                                 <img class="h-8 w-8 rounded-full"
@@ -502,7 +506,7 @@
                         From: "transform opacity-100 scale-100"
                         To: "transform opacity-0 scale-95"
                     -->
-                        <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        <div class="dropdown-nav absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
@@ -540,7 +544,6 @@
     <div class="content" style="margin-left: 20%; margin-right: 20%;">
         @yield('content')
     </div>
-    @livewireScripts
 </body>
 
 </html>
