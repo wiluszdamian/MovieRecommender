@@ -6,6 +6,11 @@
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8">
             <div>
+                @if(Session::has('message'))
+                <div class="alert border border-red-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-red-100') }}" role="alert">
+                    <span class="block sm:inline">{{ Session::get('message') }}</span>
+                </div>
+                @endif
                 <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-300">{{ __('message.create_a_new_account') }}</h2>
                 <p class="mt-2 text-center text-sm text-gray-200">
                     {{ __('message.do_you_already_have_an_account') }}
@@ -17,10 +22,10 @@
                 <input type="hidden" name="remember" value="true">
                 <div class="-space-y-px rounded-md shadow-sm">
                     <div>
-                        <label for="name" class="sr-only">{{ __('message.name') }}</label>
+                        <label for="name" class="sr-only">{{ __('message.username') }}</label>
                         <input id="name" name="name" type="text" autocomplete="email" required
                             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="{{ __('message.name') }}">
+                            placeholder="{{ __('message.username') }}">
                     </div>
                     <div>
                         <label for="email" class="sr-only">{{ __('message.email_address') }}</label>
@@ -33,6 +38,12 @@
                         <input id="password" name="password" type="password" autocomplete="current-password" required
                             class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             placeholder="{{ __('message.password') }}">
+                    </div>
+                    <div>
+                        <label for="password_confirmed" class="sr-only">{{ __('message.password') }}</label>
+                        <input id="password_confirmed" name="password_confirmed" type="password" autocomplete="current-password" required
+                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            placeholder="{{ __('message.password_confirmed') }}">
                     </div>
                 </div>
 

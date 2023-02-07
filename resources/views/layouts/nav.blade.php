@@ -398,7 +398,7 @@
         }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @livewireStyles
 </head>
 
 <body class="bg-gray-800 antialiased">
@@ -509,14 +509,14 @@
                         <div class="dropdown-nav absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-0">{{ __('message.your_profile') }}</a>
-                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a href="{{ route('settings') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">{{ __('message.settings') }}</a>
                             <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-2">{{ __('message.sign_out') }}</a>
                         </div>
-                    </div>
+                </div>
                 </div>
             </div>
             </div>
@@ -540,10 +540,12 @@
             </div>
         </div>
     </nav>
-
     <div class="content" style="margin-left: 20%; margin-right: 20%;">
         @yield('content')
     </div>
+
+
+    @livewireScripts
 </body>
 
 </html>

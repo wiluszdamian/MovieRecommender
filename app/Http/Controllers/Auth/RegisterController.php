@@ -30,11 +30,12 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|same:password_confirmed',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            session()->flash('message', $validator->errors()->first());
+            return redirect()->route('register');
         }
 
         $user = User::create([
@@ -49,6 +50,7 @@ class RegisterController extends Controller
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
 
-        return response()->json($response, 200);
+        session()->flash('message', __('message.successfully_registration'));
+        return redirect()->route('index');
     }
 }

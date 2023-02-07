@@ -13,3 +13,8 @@ import 'flowbite';
             listDisplayed = false;
         }
     });
+
+    setTimeout(function() {
+        const alert = document.querySelector('.alert');
+        alert.style.display = "none";
+      }, 3000);

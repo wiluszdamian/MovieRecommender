@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9d0296b34e6205c89cccb3f610b0b61",
+    "content-hash": "4111261805999ff10ffd9ad60be31cca",
     "packages": [
         {
             "name": "brick/math",
@@ -1008,6 +1008,60 @@
                 }
             ],
             "time": "2022-03-15T17:39:01+00:00"
+        },
+        {
+            "name": "josegus/laravel-flash",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/josegus/laravel-flash.git",
+                "reference": "76148ea4fc818499f485d9ad99f15cfed60f1185"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/josegus/laravel-flash/zipball/76148ea4fc818499f485d9ad99f15cfed60f1185",
+                "reference": "76148ea4fc818499f485d9ad99f15cfed60f1185",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": "^9.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "orchestra/testbench": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JoseGus\\LaravelFlash\\LaravelFlashServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "helpers/flash.php"
+                ],
+                "psr-4": {
+                    "JoseGus\\LaravelFlash\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gustavo",
+                    "email": "jgvv15@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/josegus/laravel-flash/issues",
+                "source": "https://github.com/josegus/laravel-flash/tree/1.3.0"
+            },
+            "time": "2022-06-13T00:09:16+00:00"
         },
         {
             "name": "laravel/framework",

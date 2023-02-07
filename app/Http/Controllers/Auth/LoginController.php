@@ -31,7 +31,8 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            session()->flash('message', $validator->errors()->first());
+            return redirect()->route('login');
         }
 
         $credentials = $request->only(['email', 'password']);
@@ -40,10 +41,11 @@ class LoginController extends Controller
             $user = Auth::user();
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
             $response = ['token' => $token];
-
-            return response()->json($response, 200);
+            session()->flash('message', __('message.successfully_login'));
+            return redirect()->route('index');
         } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            session()->flash('message', __('message.invalid_data'));
+            return redirect()->route('login');
         }
     }
 }

@@ -2,10 +2,14 @@
 @section('title', 'Login')
 
 @section('content')
-
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8">
             <div>
+                @if(Session::has('message'))
+                <div class="alert border border-red-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-red-100') }}" role="alert">
+                    <span class="block sm:inline">{{ Session::get('message') }}</span>
+                </div>
+                @endif
                 <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-300">{{ __('message.sign_in_to_your_account') }}</h2>
                 <p class="mt-2 text-center text-sm text-gray-200">
                     {{ __('message.or') }}

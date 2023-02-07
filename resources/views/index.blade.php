@@ -3,7 +3,9 @@
 
 @section('content')
 @if(Session::has('message'))
-<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+<div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-green-100') }}" role="alert">
+    <span class="block sm:inline">{{ Session::get('message') }}</span>
+  </div>
 @endif
 <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">{{ __('message.most_popular_movies') }}</p>
 <div class="popularMovies" style="display: flex;">

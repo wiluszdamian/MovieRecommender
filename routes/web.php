@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
+    Route::get('/profile', [User\ProfileController::class, 'index'])->name('profile');
+    Route::get('/settings', [User\SettingsController::class, 'index'])->name('settings');
+    Route::post('/settings', [User\SettingsController::class, 'updateEmail'])->name('settings');
 });
