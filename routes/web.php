@@ -15,8 +15,8 @@ use App\Http\Controllers\Auth;
 |
 */
 
-Route::get('/', [API\MovieController::class, 'index']);
-Route::get('/movies/{id}', [API\MovieController::class, 'show']);
+Route::get('/', [API\MovieController::class, 'index'])->name('index');
+Route::get('/movies/{id}', [API\MovieController::class, 'show'])->name('showMovie');
 
 
 Route::middleware(['guest'])->group(function () {
@@ -25,4 +25,8 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [Auth\RegisterController::class, 'index'])->name('register');
     Route::post('/register', [Auth\RegisterController::class, 'register'])->name('register');
     Route::get('/verify/{token}', [Auth\VerifyController::class, 'verifyUser'])->name('verify');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
 });
