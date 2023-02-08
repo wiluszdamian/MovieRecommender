@@ -33,4 +33,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [User\ProfileController::class, 'index'])->name('profile');
     Route::get('/settings', [User\SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updateEmail'])->name('settings');
+    Route::post('/settings', [User\SettingsController::class, 'updateUsername'])->name('settings');
 });

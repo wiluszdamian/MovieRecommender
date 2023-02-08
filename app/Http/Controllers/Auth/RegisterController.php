@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
+    /**
+     * Summary of index
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
         return view('auth.register');
@@ -20,10 +24,9 @@ class RegisterController extends Controller
 
 
     /**
-     * Register user.
-     *
+     * Summary of register
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function register(Request $request)
     {

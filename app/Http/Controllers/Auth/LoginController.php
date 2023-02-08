@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
+    /**
+     * Summary of index
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index()
     {
         return view('auth.login');
     }
+    
     /**
-     * Login user.
-     *
+     * Summary of login
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function login(Request $request)
     {

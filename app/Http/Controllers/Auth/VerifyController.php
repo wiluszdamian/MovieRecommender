@@ -16,10 +16,9 @@ use Illuminate\Support\Facades\Mail;
 class VerifyController extends Controller
 {
     /**
-     * Verify user email.
-     *
+     * Summary of verifyUser
      * @param Request $request
-     * @param $token
+     * @param mixed $token
      * @return \Illuminate\Http\JsonResponse
      */
     public function verifyUser(Request $request, $token)

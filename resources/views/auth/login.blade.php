@@ -5,15 +5,18 @@
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8">
             <div>
-                @if(Session::has('message'))
-                <div class="alert border border-red-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-red-100') }}" role="alert">
-                    <span class="block sm:inline">{{ Session::get('message') }}</span>
-                </div>
+                @if (Session::has('message'))
+                    <div class="alert border border-red-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-red-100') }}"
+                        role="alert">
+                        <span class="block sm:inline">{{ Session::get('message') }}</span>
+                    </div>
                 @endif
-                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-300">{{ __('message.sign_in_to_your_account') }}</h2>
+                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-300">
+                    {{ __('message.sign_in_to_your_account') }}</h2>
                 <p class="mt-2 text-center text-sm text-gray-200">
                     {{ __('message.or') }}
-                    <a href="/register" class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.register_now') }}</a>
+                    <a href="/register"
+                        class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.register_now') }}</a>
                 </p>
             </div>
             <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
@@ -38,11 +41,13 @@
                     <div class="flex items-center">
                         <input id="remember-me" name="remember-me" type="checkbox"
                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-200">{{ __('message.remember_me') }}</label>
+                        <label for="remember-me"
+                            class="ml-2 block text-sm text-gray-200">{{ __('message.remember_me') }}</label>
                     </div>
 
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.forgot_your_password') }}</a>
+                        <a href="#"
+                            class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.forgot_your_password') }}</a>
                     </div>
                 </div>
 

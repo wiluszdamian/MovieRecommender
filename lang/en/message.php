@@ -48,7 +48,7 @@ return [
     'profile' => 'Profile',
     'profile_information' => 'This information will be desiplayed publicly.',
     'settings_user' => 'Settings',
-    'settings_information' => 'Here you can edit your account settings.',
+    'settings_information' => 'Here you can edit your account settings. For the application to save the data, enter the current password.',
     'social' => 'Socials',
     'about' => 'About',
     'brief_description' => 'Brief description for your profile.',
@@ -59,4 +59,5 @@ return [
     'currently_password' => 'Currently Password',
     'password_incorrect' => 'Current password is incorrect',
     'successfully_updated' => 'Successfully Updated',
+    'enter_current_password' => 'To make changes, enter the users current password in the "Current Password"',
 ];

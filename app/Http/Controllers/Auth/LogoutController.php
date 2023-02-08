@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
+    /**
+     * Summary of logout
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function logout(Request $request)
     {
         Auth::logout();
