@@ -18,10 +18,15 @@ class SettingsController extends Controller
         return view('user.settings');
     }
 
+    /**
+     * Summary of updateUsername
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function updateUsername(Request $request)
     {
         $request->validate([
-            'username'=>'required|name',
+            'name'=>'required|string',
             'currently_password' => 'required',
         ]);
 
@@ -37,6 +42,7 @@ class SettingsController extends Controller
 
         return redirect()->route('settings');
     }
+
 
     /**
      * Summary of updateEmail
@@ -55,6 +61,31 @@ class SettingsController extends Controller
             session()->flash('message', __('message.password_incorrect'));
         } else {
             $user->email = $request->email;
+            $user->save();
+
+            session()->flash('message', __('message.successfully_updated'));
+        }
+
+        return redirect()->route('settings');
+    }
+
+    /**
+     * Summary of updatePassword
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'now_password'=>'required|min:6',
+            'currently_password' => 'required',
+        ]);
+
+        $user = Auth::user();
+        if (!Hash::check($request->currently_password, $user->password)) {
+            session()->flash('message', __('message.password_incorrect'));
+        } else {
+            $user->password = Hash::make($request->now_password);
             $user->save();
 
             session()->flash('message', __('message.successfully_updated'));

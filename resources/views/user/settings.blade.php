@@ -117,31 +117,32 @@
                         <div class="bg-white px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="first-name"
+                                    <label for="name"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.username') }}</label>
                                     <input type="text" name="name" id="name" autocomplete="given-name"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address"
+                                    <label for="email"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.email_address') }}</label>
                                     <input type="email" name="email" id="email" autocomplete="email"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address"
+                                    <label for="now_password"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.new_password') }}</label>
-                                    <input type="text" name="email-address" id="email-address" autocomplete="email"
+                                    <input type="password" name="now_password" id="now_password" autocomplete="email"
+                                        minlength="6"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="email-address"
+                                    <label for="currently_password"
                                         class="block text-sm font-medium text-gray-700"><b>{{ __('message.currently_password') }}</b></label>
                                     <input type="password" name="currently_password" id="currently_password"
-                                        autocomplete="email"
+                                        minlength="6" autocomplete="email"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                 </div>
 

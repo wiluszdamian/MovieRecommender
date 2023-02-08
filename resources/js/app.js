@@ -1,20 +1,20 @@
-import './bootstrap';
-import 'flowbite';
+import "./bootstrap";
+import "flowbite";
 
 /* Dropdown animation */
-    let listDisplayed = false;
-    document.querySelector(".button-nav").addEventListener("click", function() {
-        let listDiv = document.querySelector(".dropdown-nav");
-        if (!listDisplayed) {
-            listDiv.style.display = "block";
-            listDisplayed = true;
-        } else {
-            listDiv.style.display = "none";
-            listDisplayed = false;
-        }
-    });
+let listDisplayed = false;
+document.querySelector(".button-nav").addEventListener("click", function () {
+    let listDiv = document.querySelector(".dropdown-nav");
+    if (!listDisplayed) {
+        listDiv.style.display = "block";
+        listDisplayed = true;
+    } else {
+        listDiv.style.display = "none";
+        listDisplayed = false;
+    }
+});
 
-    setTimeout(function() {
-        const alert = document.querySelector('.alert');
-        alert.style.display = "none";
-      }, 3000);
+setTimeout(function () {
+    const alert = document.querySelector(".alert");
+    alert.style.display = "none";
+}, 3000);
