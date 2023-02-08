@@ -73,4 +73,16 @@ return [
     'password_incorrect' => 'Current password is incorrect',
     'successfully_updated' => 'Successfully Updated',
     'enter_current_password' => 'To make changes, enter the users current password in the "Current Password"',
+
+
+    // Emails
+    'hello' => 'Hello ',
+    'thanks_for_register' => 'Thank you for registering! To complete the process and activate your account, please click the link below: ',
+    'confirm_email' => 'Confirm email address',
+    'if_not_register' => 'If you have not registered on our site, please ignore this message.',
+    'best_regards' => 'Best Regards,',
+    'team' => 'Team ',
+    'successfully_verified_email' => 'Your account has been successfully verified.',
+    'verified_email' => 'Your account has already been verified. You can log in now.',
+    'error_verified_email' => 'Unknown user',
 ];

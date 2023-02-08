@@ -19,8 +19,7 @@ class VerifyEmail extends Mailable
     public $user;
 
     /**
-     * Create a new message instance.
-     *
+     * Summary of __construct
      * @param User $user
      */
     public function __construct(User $user)
@@ -29,9 +28,8 @@ class VerifyEmail extends Mailable
     }
 
     /**
-     * Build the message.
-     *
-     * @return $this
+     * Summary of build
+     * @return VerifyEmail
      */
     public function build()
     {

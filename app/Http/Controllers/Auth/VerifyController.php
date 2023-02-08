@@ -19,7 +19,7 @@ class VerifyController extends Controller
      * Summary of verifyUser
      * @param Request $request
      * @param mixed $token
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function verifyUser(Request $request, $token)
     {
@@ -30,14 +30,14 @@ class VerifyController extends Controller
             if (!$verifyUser->email_verified_at) {
                 $verifyUser->email_verified_at = 1;
                 $verifyUser->save();
-                $status = "Twoje konto zostało pomyślnie zweryfikowane.";
+                session()->flash('message', __('message.successfully_verified_email'));
             } else {
-                $status = "Twoje konto już zostało zweryfikowane. Możesz się zalogować.";
+                session()->flash('message', __('message.verified_email'));
             }
         } else {
-            return response()->json(['error' => "Nieznany użytkownik"], 401);
+            session()->flash('message', __('message.error_verified_email'));
         }
 
-        return response()->json(['status' => $status], 200);
+        return redirect()->route('index');
     }
 }

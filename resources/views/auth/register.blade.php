@@ -16,7 +16,7 @@
                     {{ __('message.create_a_new_account') }}</h2>
                 <p class="mt-2 text-center text-sm text-gray-200">
                     {{ __('message.do_you_already_have_an_account') }}
-                    <a href="/register"
+                    <a href="/login"
                         class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.sign_in') }}</a>
                 </p>
             </div>
@@ -50,21 +50,6 @@
                             placeholder="{{ __('message.password_confirmed') }}">
                     </div>
                 </div>
-
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox"
-                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                        <label for="remember-me"
-                            class="ml-2 block text-sm text-gray-200">{{ __('message.remember_me') }}</label>
-                    </div>
-
-                    <div class="text-sm">
-                        <a href="#"
-                            class="font-medium text-indigo-600 hover:text-indigo-500">{{ __('message.forgot_your_password') }}</a>
-                    </div>
-                </div>
-
                 <div>
                     <button type="submit"
                         class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
