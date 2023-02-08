@@ -28,6 +28,7 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [Auth\RegisterController::class, 'index'])->name('register');
     Route::post('/register', [Auth\RegisterController::class, 'register'])->name('register');
     Route::get('/verify/{token}', [Auth\VerifyController::class, 'verifyUser'])->name('verify');
+    Route::get('/forgot', [Auth\ForgotPasswordController::class, 'index'])->name('forgot');
 });
 
 Route::middleware(['auth'])->group(function () {
