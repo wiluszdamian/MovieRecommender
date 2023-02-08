@@ -40,8 +40,9 @@ class LoginController extends Controller
         }
 
         $credentials = $request->only(['email', 'password']);
+        $remember = $request->has('remember-me');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             $user = Auth::user();
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
             $response = ['token' => $token];
