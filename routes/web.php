@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\API;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\User;
@@ -16,8 +17,9 @@ use App\Http\Controllers\User;
 |
 */
 
-Route::get('/', [API\MovieController::class, 'index'])->name('index');
-Route::get('/movies/{id}', [API\MovieController::class, 'show'])->name('showMovie');
+Route::get('/', [API\IndexController::class, 'index'])->name('index');
+Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
+Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
 
 
 Route::middleware(['guest'])->group(function () {
