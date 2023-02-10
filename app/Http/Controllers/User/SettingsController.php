@@ -25,22 +25,22 @@ class SettingsController extends Controller
      */
     public function updateUsername(Request $request)
     {
-        $request->validate([
-            'name'=>'required|string',
-            'currently_password' => 'required',
-        ]);
+        // $request->validate([
+        //     'name'=>'required|string',
+        //     'currently_password' => 'required',
+        // ]);
 
-        $user = Auth::user();
-        if (!Hash::check($request->currently_password, $user->password)) {
-            session()->flash('message', __('message.password_incorrect'));
-        } else {
-            $user->name = $request->name;
-            $user->save();
+        // $user = Auth::user();
+        // if (!Hash::check($request->currently_password, $user->password)) {
+        //     session()->flash('message', __('message.password_incorrect'));
+        // } else {
+        //     $user->name = $request->name;
+        //     $user->save();
 
-            session()->flash('message', __('message.successfully_updated'));
-        }
+        //     session()->flash('message', __('message.successfully_updated'));
+        // }
 
-        return redirect()->route('settings');
+        // return redirect()->route('settings');
     }
 
 
@@ -51,22 +51,22 @@ class SettingsController extends Controller
      */
     public function updateEmail(Request $request)
     {
-        $request->validate([
-            'email'=>'required|email',
-            'currently_password' => 'required',
-        ]);
+        // $request->validate([
+        //     'email'=>'required|email',
+        //     'currently_password' => 'required',
+        // ]);
 
-        $user = Auth::user();
-        if (!Hash::check($request->currently_password, $user->password)) {
-            session()->flash('message', __('message.password_incorrect'));
-        } else {
-            $user->email = $request->email;
-            $user->save();
+        // $user = Auth::user();
+        // if (!Hash::check($request->currently_password, $user->password)) {
+        //     session()->flash('message', __('message.password_incorrect'));
+        // } else {
+        //     $user->email = $request->email;
+        //     $user->save();
 
-            session()->flash('message', __('message.successfully_updated'));
-        }
+        //     session()->flash('message', __('message.successfully_updated'));
+        // }
 
-        return redirect()->route('settings');
+        // return redirect()->route('settings');
     }
 
     /**
@@ -76,21 +76,21 @@ class SettingsController extends Controller
      */
     public function updatePassword(Request $request)
     {
-        $request->validate([
-            'now_password'=>'required|min:6',
-            'currently_password' => 'required',
-        ]);
+        // $request->validate([
+        //     'now_password'=>'required|min:6',
+        //     'currently_password' => 'required',
+        // ]);
 
-        $user = Auth::user();
-        if (!Hash::check($request->currently_password, $user->password)) {
-            session()->flash('message', __('message.password_incorrect'));
-        } else {
-            $user->password = Hash::make($request->now_password);
-            $user->save();
+        // $user = Auth::user();
+        // if (!Hash::check($request->currently_password, $user->password)) {
+        //     session()->flash('message', __('message.password_incorrect'));
+        // } else {
+        //     $user->password = Hash::make($request->now_password);
+        //     $user->save();
 
-            session()->flash('message', __('message.successfully_updated'));
-        }
+        //     session()->flash('message', __('message.successfully_updated'));
+        // }
 
-        return redirect()->route('settings');
+        // return redirect()->route('settings');
     }
 }

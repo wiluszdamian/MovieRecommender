@@ -34,9 +34,10 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
-    Route::get('/profile', [User\ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [User\UserProfileController::class, 'index'])->name('profile');
     Route::get('/settings', [User\SettingsController::class, 'index'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updateEmail'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updateUsername'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updatePassword'])->name('settings');
+    Route::post('/settings/profile/update',[User\UserProfileController::class, 'update'])->name('settings.profile_update');
 });
