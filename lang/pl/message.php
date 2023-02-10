@@ -13,6 +13,8 @@ return [
     |
     */
 
+    //TODO: Rewriting langs, knocking out directories and files in favor of one main file with lang, example: polish.php or english.php
+
     'most_popular_movies' => 'Popularne Filmy',
     'most_popular_tvseries' => 'Popularne Seriale',
     'release_date' => 'Premiera: ',

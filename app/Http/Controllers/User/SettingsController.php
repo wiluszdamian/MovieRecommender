@@ -25,6 +25,7 @@ class SettingsController extends Controller
      */
     public function updateUsername(Request $request)
     {
+        //TODO: Fix so it works for single updates, fix error display, reorganize controller and rename it
         // $request->validate([
         //     'name'=>'required|string',
         //     'currently_password' => 'required',

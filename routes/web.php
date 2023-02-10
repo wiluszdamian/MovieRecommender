@@ -39,5 +39,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/settings', [User\SettingsController::class, 'updateEmail'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updateUsername'])->name('settings');
     Route::post('/settings', [User\SettingsController::class, 'updatePassword'])->name('settings');
-    Route::post('/settings/profile/update',[User\UserProfileController::class, 'update'])->name('settings.profile_update');
+    Route::post('/settings/profile-update', [User\UserProfileController::class, 'update'])->name('settings.profile_update');
 });

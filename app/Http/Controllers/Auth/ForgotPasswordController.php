@@ -11,11 +11,13 @@ class ForgotPasswordController extends Controller
      * Summary of index
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index() {
+    public function index()
+    {
         return view('auth.forgot');
     }
 
-    public function forgot(Request $request) {
+    public function forgot(Request $request)
+    {
         //TODO: Forgot Password
     }
 }
