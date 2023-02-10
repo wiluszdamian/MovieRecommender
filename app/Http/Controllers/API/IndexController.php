@@ -88,6 +88,12 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * Summary of showActres
+     *
+     * @param mixed $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function showActres($id)
     {
         $client = new Client();
