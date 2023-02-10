@@ -16,10 +16,10 @@ jobs:
       - name: Setup PHP Action
         uses: shivammathur/setup-php@2.24.0
         with:
-          php-version: "8.2"
+          php-version: "8.1"
 
       - name: Install dependencies
         run: composer install
 
       - name: Run PHP CS Fixer
-        run: php artisan fixer:fix
+        run: ./vendor/bin/php-cs-fixer fix
