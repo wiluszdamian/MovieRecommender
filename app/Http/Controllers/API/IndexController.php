@@ -18,11 +18,11 @@ class IndexController extends Controller
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
         
-        $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/movie/popular?api_key={$apiKey}&language=en-US&page=1");
+        $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/movie/popular?api_key={$apiKey}&language=pl");
         $popularMovies = json_decode($popularMoviesResponse->getBody(), true)['results'];
         $popularMovies = array_slice($popularMovies, 0, 5);
 
-        $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/popular?api_key={$apiKey}&language=en-US&page=1");
+        $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/popular?api_key={$apiKey}&language=pl");
         $popularTvSeries = json_decode($popularTvSeriesResponse->getBody(), true)['results'];
         $popularTvSeries = array_slice($popularTvSeries, 0, 5);
                
@@ -42,16 +42,21 @@ class IndexController extends Controller
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 
-        $movieResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}?api_key={$apiKey}&language=en-US");
+        $movieResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}?api_key={$apiKey}&language=pl");
         $movie = json_decode($movieResponse->getBody(), true);
 
-        $actorResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/credits?api_key={$apiKey}&language=en-US");
+        $recommendationsResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/recommendations?api_key={$apiKey}&language=pl");
+        $recommendations = json_decode($recommendationsResponse->getBody(), true)['results'];
+        $recommendations = array_slice($recommendations, 0, 10);
+
+        $actorResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/credits?api_key={$apiKey}&language=pl");
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
 
         return view('pages.showMovie', [
             'movie' => $movie,
             'actors' => $actors,
+            'recommendations' => $recommendations
         ]);
     }
     
@@ -65,16 +70,21 @@ class IndexController extends Controller
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 
-        $tvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}?api_key={$apiKey}&language=en-US");
+        $tvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}?api_key={$apiKey}&language=pl");
         $tvSeries = json_decode($tvSeriesResponse->getBody(), true);
 
-        $actorResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}/credits?api_key={$apiKey}&language=en-US");
+        $recommendationsResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}/recommendations?api_key={$apiKey}&language=pl");
+        $recommendations = json_decode($recommendationsResponse->getBody(), true)['results'];
+        $recommendations = array_slice($recommendations, 0, 10);
+
+        $actorResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}/credits?api_key={$apiKey}&language=pl");
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
 
         return view('pages.showTvSeries', [
             'tv_series' => $tvSeries,
             'actors' => $actors,
+            'recommendations' => $recommendations
         ]);
     }
 }
