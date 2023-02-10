@@ -95,6 +95,18 @@ return [
     'enter_current_password' => 'Aby wprowadzić zmiany wprowadź obecne hasło',
 
 
+    // Actres
+    'actres_follow' => 'Obserwuj',
+    'actres_biography' => 'Biografia: ',
+    'actres_birthday' => 'Data urodzenia: ',
+    'actres_deathday' => 'Data śmierci: ',
+    'actres_place_of_birth' => 'Miejsce urodzenia: ',
+    'actres_also_know_as' => 'Znana również jako: ',
+    'actres_movie' => 'Filmy z ',
+    'actres_tv' => 'Seriale z ',
+    'actres_recommendation' => 'Podobni do ',
+
+
     // Emails
     'hello' => 'Witaj ',
     'thanks_for_register' => 'Dziękujemy za rejestracje! Aby zakończyć proces i aktywować swoje konto, kliknij poniższy link: ',

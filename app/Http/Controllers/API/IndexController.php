@@ -87,4 +87,27 @@ class IndexController extends Controller
             'recommendations' => $recommendations
         ]);
     }
+
+    public function showActres($id)
+    {
+        $client = new Client();
+        $apiKey = env('API_TMDB_KEY');
+
+        $actresResponse = $client->get("https://api.themoviedb.org/3/person/{$id}?api_key={$apiKey}&language=pl");
+        $actres = json_decode($actresResponse->getBody(), true);
+
+        $actresMovieResponse = $client->get("https://api.themoviedb.org/3/person/{$id}/movie_credits?api_key={$apiKey}&language=pl");
+        $actresMovie = json_decode($actresMovieResponse->getBody(), true)['cast'];
+        $actresMovie = array_slice($actresMovie, 0, 10);
+
+        $actresTvResponse = $client->get("https://api.themoviedb.org/3/person/{$id}/tv_credits?api_key={$apiKey}&language=pl");
+        $actresTv = json_decode($actresTvResponse->getBody(), true)['cast'];
+        $actresTv = array_slice($actresTv, 0, 10);
+
+        return view('pages.showActres', [
+            'actres' => $actres,
+            'actresMovie' => $actresMovie,
+            'actresTv' => $actresTv,
+        ]);
+    }
 }

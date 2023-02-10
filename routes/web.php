@@ -20,6 +20,7 @@ use App\Http\Controllers\User;
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
 Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
 Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
+Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('showActres');
 
 
 Route::middleware(['guest'])->group(function () {

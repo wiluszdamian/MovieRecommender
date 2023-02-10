@@ -14,7 +14,7 @@
         @foreach ($popularMovies as $movie)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                 style="display: flex; flex-direction: column; width: 20%; margin: 0.5%">
-                <a href="#">
+                <a href="/movies/{{ $movie['id'] }}">
                     <img class="rounded-t-lg" src="https://image.tmdb.org/t/p/w300{{ $movie['poster_path'] }}"
                         alt="{{ $movie['title'] }}" />
                 </a>
