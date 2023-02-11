@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\API;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\User;
@@ -24,6 +24,7 @@ Route::get('/tv-series', [API\TvController::class, 'index'])->name('tv');
 Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('tv.detailed');
 Route::get('/actors', [API\ActorController::class, 'index'])->name('actors');
 Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('actors.detailed');
+Route::get('/language/{locale}', [LanguageController::class, 'changeLanguage'])->name('language');
 
 
 Route::middleware(['guest'])->group(function () {

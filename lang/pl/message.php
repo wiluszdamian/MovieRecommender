@@ -93,6 +93,9 @@ return [
     'currently_password' => 'Obecne hasło',
     'enter_current_password' => 'Aby wprowadzić zmiany wprowadź obecne hasło',
 
+    // Navbar 
+    'navbar_language_en' => 'English',
+    'navbar_language_pl' => 'Polski',
 
     // Messages
     'invalid_user_id' => 'Nieprawidlowy identyfikator użytkownika',
