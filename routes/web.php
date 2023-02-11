@@ -18,11 +18,11 @@ use App\Http\Controllers\User;
 */
 
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
-Route::get('/movies', [API\Movie\MovieController::class, 'index'])->name('movie');
+Route::get('/movies', [API\Movie\MovieController::class, 'index'])->name('movies');
 Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
-Route::get('/tv-series', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
+Route::get('/tv-series', [API\TvSerie\TvSerieController::class, 'index'])->name('tv-series');
 Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
-Route::get('/actors', [API\IndexController::class, 'showActres'])->name('showActres');
+Route::get('/actors', [API\Actors\ActorController::class, 'index'])->name('actors');
 Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('showActres');
 
 

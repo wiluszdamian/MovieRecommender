@@ -1,7 +1,7 @@
 import "./bootstrap";
 import "flowbite";
 
-/* Dropdown animation */
+/* Navbar dropdown animation */
 let listDisplayed = false;
 document.querySelector(".button-nav").addEventListener("click", function () {
     let listDiv = document.querySelector(".dropdown-nav");

@@ -56,13 +56,13 @@
                             <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
                                 aria-current="page">{{ __('message.home') }}</a>
 
-                            <a href="/movies"
+                            <a href="{{ route('movies') }}"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md ">{{ __('message.movies') }}</a>
 
-                            <a href="/tv-series"
+                            <a href="{{ route('tv-series') }}"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.tv_series') }}</a>
 
-                            <a href="/actres"
+                            <a href="{{ route('actors') }}"
                                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.actres') }}</a>
                         </div>
                     </div>
@@ -105,24 +105,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        @endauth
-        <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pt-2 pb-3">
-                <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                    aria-current="page">{{ __('message.home') }}</a>
-
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.movies') }}</a>
-
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.tv_series') }}</a>
-
-                <a href="#"
-                    class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.actres') }}</a>
-            </div>
-        </div>
+                @endauth
     </nav>
     <div class="content" style="margin-left: 20%; margin-right: 20%;">
         @yield('content')

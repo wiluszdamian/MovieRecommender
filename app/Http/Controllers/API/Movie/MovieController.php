@@ -9,6 +9,6 @@ class MovieController extends Controller
 {
     public function index()
     {
-        return view('movies.movie');
+        return view('pages.movies.movie');
     }
 }
