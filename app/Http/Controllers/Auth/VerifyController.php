@@ -23,7 +23,6 @@ class VerifyController extends Controller
      */
     public function verifyUser(Request $request, $token)
     {
-
         $verifyUser = User::where('token', $token)->first();
 
         if (isset($verifyUser)) {

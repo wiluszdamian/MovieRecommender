@@ -17,23 +17,26 @@ class ForgotPasswordController extends Controller
         return view('auth.forgot');
     }
 
-// public function sendResetLinkEmail(Request $request)
-// {
-//     $this->validate($request, ['email' => 'required|email']);
+    public function sendResetLinkEmail(Request $request)
+    {
+        try {
+            $this->validate($request, ['email' => 'required|email']);
 
-//     $response = $this->broker()->sendResetLink(
-//         $request->only('email')
-//     );
+            $response = $this->broker()->sendResetLink(
+                $request->only('email')
+            );
 
-//     if ($response === Password::RESET_LINK_SENT) {
-//         return response()->json(['message' => 'Reset link sent to your email']);
-//     }
+            if ($response === Password::RESET_LINK_SENT) {
+                session()->flash('message', __('message.reset_link_sent'));
+            }
+        } catch (\Exception $e) {
+            session()->flash('message', __('message.error') . $e->getMessage());
+        }
+        return redirect()->route('forgot');
+    }
 
-//     return response()->json(['message' => 'Unable to send reset link, please try again']);
-// }
-
-// public function broker()
-// {
-//     return Password::broker();
-// }
+    public function broker()
+    {
+        return Password::broker();
+    }
 }

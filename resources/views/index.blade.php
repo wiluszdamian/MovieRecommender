@@ -1,5 +1,5 @@
 @extends('layouts.nav')
-@section('title', 'Home')
+@section('title', 'Strona główna')
 
 @section('content')
     @if (Session::has('message'))

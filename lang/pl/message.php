@@ -101,6 +101,7 @@ return [
     'unable_to_update_user_profile' => 'Błąd podczas aktualizowania profilu użytkownika',
     'update_success' => 'Sukces! Dane zaktualizowano pomyślnie',
     'password_update_error' => 'Obecne hasło jest nieprawidłowe',
+    'reset_link_sent' => 'Sukces! Link do zresetowania został wysłany',
     'error' => 'Problem: ',
 
     // Actres

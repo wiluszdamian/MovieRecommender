@@ -1,5 +1,5 @@
 @extends('layouts.nav')
-@section('title', 'Register')
+@section('title', 'Stwórz nowe konto')
 
 @section('content')
 

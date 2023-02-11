@@ -85,6 +85,6 @@ class UserProfileController extends Controller
         } catch (\Exception $e) {
             session()->flash('message', __('message.error') . $e->getMessage());
         }
-        return redirect()->route('settings');
+        return redirect()->route('forgot');
     }
 }

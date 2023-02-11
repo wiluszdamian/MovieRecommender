@@ -1,19 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-  module.exports = {
+module.exports = {
     content: [
-      "./resources/**/*.blade.php",
-      "./resources/**/*.js",
-      "./resources/**/*.vue",
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
     ],
     theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
+        extend: {
+            gridTemplateRows: {
+                "[auto,auto,1fr]": "auto auto 1fr",
+            },
         },
-      },
     },
     plugins: [
-      require('@tailwindcss/aspect-ratio'),
-      require('@tailwindcss/forms'),
+        require("@tailwindcss/aspect-ratio"),
+        require("@tailwindcss/forms"),
     ],
-  }
+};

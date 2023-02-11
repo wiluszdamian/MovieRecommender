@@ -18,7 +18,7 @@ use App\Http\Controllers\User;
 */
 
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
-Route::get('/movies', [API\IndexController::class, 'showMovie'])->name('showMovie');
+Route::get('/movies', [API\Movie\MovieController::class, 'index'])->name('movie');
 Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
 Route::get('/tv-series', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
 Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
@@ -33,7 +33,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [Auth\RegisterController::class, 'register'])->name('register');
     Route::get('/verify/{token}', [Auth\VerifyController::class, 'verifyUser'])->name('verify');
     Route::get('/forgot', [Auth\ForgotPasswordController::class, 'index'])->name('forgot');
-    Route::post('/forgot/reset-password', [Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forgot.reset_password');
+    Route::post('/forgot/reset-password', [Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.reset');
 });
 
 Route::middleware(['auth'])->group(function () {

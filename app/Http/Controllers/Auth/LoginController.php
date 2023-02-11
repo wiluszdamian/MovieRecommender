@@ -21,7 +21,7 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
-    
+
     /**
      * Summary of login
      * @param Request $request
