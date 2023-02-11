@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\UsersProfile;
 use App\Models\User;
-
+use App\Models\UsersProfile;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
-
     /**
-     * Display the user profile information.
+     * Display the user profile page.
+     *
      * @return \Illuminate\View\View
      */
     public function index()
@@ -25,23 +24,13 @@ class ProfileController extends Controller
 
     /**
      * Update the user profile information.
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
+     *
+     * @param UpdateProfileRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(UpdateProfileRequest $request)
     {
         try {
-            //TODO: Move validations outside the controller
-            //TODO: Add validations in such a way as to avoid SQL Injection
-
-            $validatedData = $request->validate([
-                'reddit-url' => 'nullable|string',
-                'twitter-url' => 'nullable|string',
-                'about-me' => 'nullable|string|max:255',
-                'country' => 'nullable|string',
-                'city' => 'nullable|string',
-            ]);
-
             $userId = \Auth::id();
 
             if (!$userId) {
@@ -57,11 +46,11 @@ class ProfileController extends Controller
             }
 
             $updateData = [
-                'reddit_url' => $validatedData['reddit-url'],
-                'twitter_url' => $validatedData['twitter-url'],
-                'about_me' => $validatedData['about-me'],
-                'country' => $validatedData['country'],
-                'city' => $validatedData['city'],
+                'reddit_url' => $request['reddit-url'],
+                'twitter_url' => $request['twitter-url'],
+                'about_me' => $request['about-me'],
+                'country' => $request['country'],
+                'city' => $request['city'],
             ];
 
             foreach ($updateData as $field => $value) {

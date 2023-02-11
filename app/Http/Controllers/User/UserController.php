@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\User;
 
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\UsersProfile;
 use App\Models\User;
+use App\Models\UsersProfile;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateUserRequest;
 
-class SettingsController extends Controller
+class UserController extends Controller
 {
-
+    /** 
+     * Show the user settings page.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $userId = \Auth::id();
@@ -21,27 +23,22 @@ class SettingsController extends Controller
         return view('users.settings', compact('userProfile', 'user'));
     }
 
-    public function update(Request $request)
+    /**
+     * Update the user information.
+     * @param UpdateUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(UpdateUserRequest $request)
     {
-        //TODO: Move validations outside the controller
-        //TODO: Add validations in such a way as to avoid SQL Injection
-
-        $validatedData = $request->validate([
-            'name' => 'nullable|string',
-            'email' => 'nullable|string',
-            'now_password' => 'nullable|string',
-            'currently_password' => 'nullable|string',
-        ]);
-
         $user = Auth::user();
 
         if (!Hash::check($request->currently_password, $user->password)) {
             session()->flash('message', __('message.password_update_error'));
         } else {
             $updateData = [
-                'name' => $validatedData['name'],
-                'email' => $validatedData['email'],
-                'password' => $validatedData['now_password'],
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => $request->input('now_password'),
             ];
 
             foreach ($updateData as $field => $value) {
@@ -49,11 +46,11 @@ class SettingsController extends Controller
                     unset($updateData[$field]);
                 }
             }
-            if (!empty($validatedData['now_password'])) {
-                $updateData['password'] = Hash::make($validatedData['now_password']);
+            if (!empty($request->input('now_password'))) {
+                $updateData['password'] = Hash::make($request->input('now_password'));
             }
             $updateResult = $user->update($updateData);
-            $this->alert('success', 'Basic Alert');
+            session()->flash('message', __('message.update_success'));
         }
 
         return redirect()->route('settings');
