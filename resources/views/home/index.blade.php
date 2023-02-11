@@ -1,13 +1,6 @@
-@extends('layouts.nav')
+@extends('layouts.skeleton')
 @section('title', 'Strona główna')
-
 @section('content')
-    @if (Session::has('message'))
-        <div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-green-100') }}"
-            role="alert">
-            <span class="block sm:inline">{{ Session::get('message') }}</span>
-        </div>
-    @endif
     <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">
         {{ __('message.most_popular_movies') }}</p>
     <div class="popularMovies" style="display: flex;">
@@ -19,7 +12,7 @@
                         alt="{{ $movie['title'] }}" />
                 </a>
                 <div class="p-5">
-                    <a href="#">
+                    <a href="/movies/{{ $movie['id'] }}">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $movie['title'] }}</h5>
                     </a>
@@ -50,12 +43,12 @@
         @foreach ($popularTvSeries as $tvSerie)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                 style="display: flex; flex-direction: column; width: 20%; margin: 0.5%">
-                <a href="#">
+                <a href="/tv-series/{{ $tvSerie['id'] }}">
                     <img class="rounded-t-lg" src="https://image.tmdb.org/t/p/w300{{ $tvSerie['poster_path'] }}"
                         alt="{{ $tvSerie['name'] }}" />
                 </a>
                 <div class="p-5">
-                    <a href="#">
+                    <a href="/tv-series/{{ $tvSerie['id'] }}">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $tvSerie['name'] }}</h5>
                     </a>

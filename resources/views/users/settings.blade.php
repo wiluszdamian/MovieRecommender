@@ -1,14 +1,6 @@
-@extends('layouts.nav')
-@section('title', 'Settings')
-
+@extends('layouts.skeleton')
+@section('title', 'Ustawienia')
 @section('content')
-    @if (Session::has('message'))
-        <div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-green-100') }}"
-            role="alert">
-            <span class="block sm:inline">{{ Session::get('message') }}</span>
-        </div>
-    @endif
-    <br />
     <div>
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
@@ -18,7 +10,7 @@
                 </div>
             </div>
             <div class="mt-5 md:col-span-2 md:mt-0">
-                <form action="{{ route('settings.profile_update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" method="POST">
                     @csrf
                     <div class="shadow sm:overflow-hidden sm:rounded-md">
                         <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
@@ -108,7 +100,7 @@
                 </div>
             </div>
             <div class="mt-5 md:col-span-2 md:mt-0">
-                <form action="{{ route('settings.user_update') }}" method="POST">
+                <form action="{{ route('user.update') }}" method="POST">
                     @csrf
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">

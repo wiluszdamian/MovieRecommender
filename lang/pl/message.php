@@ -15,8 +15,8 @@ return [
 
     //TODO: Rewriting langs, knocking out directories and files in favor of one main file with lang, example: polish.php or english.php
 
-    'most_popular_movies' => 'Popularne Filmy',
-    'most_popular_tvseries' => 'Popularne Seriale',
+    'most_popular_movies' => 'Popularne filmy w ostatnim tygodniu',
+    'most_popular_tvseries' => 'Popularne seriale w ostatnim tygodniu',
     'release_date' => 'Premiera: ',
     'genres' => 'Gatunek: ',
     'budget' => 'Budżet: ',
@@ -64,7 +64,7 @@ return [
     'sign_in_to_your_account' => 'Zaloguj się na konto',
     'or' => 'lub',
     'forgot_password' => 'Zresetuj hasło',
-    'forgot_info' => 'Możesz odzyskać swoje hasło wpisują adres e-mail i nazwę użytkownika, jeśli konto istieje to na podany adres e-mail zostanie wysłany link do zresetowania hasła.',
+    'forgot_info' => 'Możesz odzyskać swoje hasło wpisują adres e-mail i nazwę użytkownika, jeśli konto istieje to na podany adres e-mail zostanie wysłany link do zresetowania hasła',
     'send_reminder' => 'Wyślij link',
     'register_now' => 'Zarejestruj teraz',
     'email_address' => 'Adres e-mail',
@@ -77,11 +77,11 @@ return [
     'name' => 'Użytkownik',
     'successfully_login' => 'Pomyślnie zalogowano',
     'invalid_data' => 'Niepoprawne dane',
-    'successfully_registration' => 'Udana rejestracja! Przejdź na podany adres e-mail w celu aktywacji konta.',
+    'successfully_registration' => 'Udana rejestracja! Przejdź na podany adres e-mail w celu aktywacji konta',
     'logout' => 'Pomyślnie wylogowano',
     'profile' => 'Profil',
     'profile_information' => 'Te informacje będą wyświetlane publicznie.',
-    'settings_information' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło.',
+    'settings_information' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło',
     'social' => 'Społeczności',
     'about' => 'O mnie',
     'brief_description' => 'Krótki opis',
@@ -132,7 +132,7 @@ return [
 
     // Settings 
     'settings_profile' => 'Profil',
-    'settings_profile_description' => 'Te informacje będą wyświetlane publicznie.',
+    'settings_profile_description' => 'Te informacje będą wyświetlane publicznie',
     'settings_socials' => 'Społeczności',
     'settings_socials_twitter_placeholder' => 'https://twitter.com/id/',
     'settings_socials_reddit_placeholder' => 'https://reddit.com/r/user/id/',
@@ -146,7 +146,7 @@ return [
     'settings_avatar_url' => 'Link do Avatara',
     'settings_avatar_url_placeholder' => 'https://linkdoavatara.pl/przyklad.png',
     'settings_user' => 'Ustawienia użytkownika',
-    'settings_user_description' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło.',
+    'settings_user_description' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło',
     'settings_username' => 'Nazwa użytkownika',
     'settings_email' => 'Adres e-mail',
     'settings_now_password' => 'Nowe hasło',
@@ -160,7 +160,7 @@ return [
     'email_if_not_register' => 'Jeśli nie rejestrowałeś się na stronie MovieRecommender, zignoruj tę wiadomość',
     'email_best_regards' => 'Pozdrawiam,',
     'email_team' => 'Zespół ',
-    'email_successfully_verified_email' => 'Twoje konto zostało pomyślnie zweryfikowane',
-    'email_verified_email' => 'Twoje konto zostało już zweryfikowane. Możesz się teraz zalogować.',
+    'email_successfully_verified_email' => 'Twoje konto zostało pomyślnie zweryfikowane, możesz się zalogować',
+    'email_verified_email' => 'Twoje konto zostało już zweryfikowane. Możesz się teraz zalogować',
     'email_error_verified' => 'Nieznany użytkownik',
 ];

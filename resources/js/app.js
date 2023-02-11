@@ -17,4 +17,4 @@ document.querySelector(".button-nav").addEventListener("click", function () {
 setTimeout(function () {
     const alert = document.querySelector(".alert");
     alert.style.display = "none";
-}, 3000);
+}, 2000);

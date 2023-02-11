@@ -21,15 +21,15 @@ class IndexController extends Controller
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 
-        $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/movie/popular?api_key={$apiKey}&language=pl");
+        $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/trending/movie/week?api_key={$apiKey}&language=pl");
         $popularMovies = json_decode($popularMoviesResponse->getBody(), true)['results'];
         $popularMovies = array_slice($popularMovies, 0, 5);
 
-        $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/popular?api_key={$apiKey}&language=pl");
+        $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/trending/tv/week?api_key={$apiKey}&language=pl");
         $popularTvSeries = json_decode($popularTvSeriesResponse->getBody(), true)['results'];
         $popularTvSeries = array_slice($popularTvSeries, 0, 5);
 
-        return view('index', [
+        return view('home.index', [
             'popularMovies' => $popularMovies,
             'popularTvSeries' => $popularTvSeries
         ]);
@@ -57,7 +57,7 @@ class IndexController extends Controller
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
 
-        return view('pages.showMovie', [
+        return view('movies.details', [
             'movie' => $movie,
             'actors' => $actors,
             'recommendations' => $recommendations
@@ -86,7 +86,7 @@ class IndexController extends Controller
         $actors = json_decode($actorResponse->getBody(), true)['cast'];
         $actors = array_slice($actors, 0, 10);
 
-        return view('pages.showTvSeries', [
+        return view('tv.details', [
             'tv_series' => $tvSeries,
             'actors' => $actors,
             'recommendations' => $recommendations
@@ -116,7 +116,7 @@ class IndexController extends Controller
         $actresTv = json_decode($actresTvResponse->getBody(), true)['cast'];
         $actresTv = array_slice($actresTv, 0, 10);
 
-        return view('pages.showActres', [
+        return view('actors.details', [
             'actres' => $actres,
             'actresMovie' => $actresMovie,
             'actresTv' => $actresTv,

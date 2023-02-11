@@ -1,16 +1,9 @@
-@extends('layouts.nav')
-@section('title', 'Zresetuj hasło')
-
+@extends('layouts.skeleton')
+@section('title', 'Reset hasła')
 @section('content')
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8">
             <div>
-                @if (Session::has('message'))
-                    <div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-green-100') }}"
-                        role="alert">
-                        <span class="block sm:inline">{{ Session::get('message') }}</span>
-                    </div>
-                @endif
                 <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-300">
                     {{ __('message.forgot_password') }}</h2><br />
                 <p class="text-center tracking-tight text-gray-300">{{ __('message.forgot_info') }}</p>
@@ -30,7 +23,6 @@
                     <button type="submit"
                         class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <!-- Heroicon name: mini/lock-closed -->
                             <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 aria-hidden="true">

@@ -1,21 +1,11 @@
-@extends('layouts.nav')
-@section('title', 'Serial')
-
+@extends('layouts.skeleton')
+@section('title', 'Strona główna')
 @section('content')
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="bg-gray-800">
         <div class="pt-6">
-
             <!-- Product info -->
             <div class="lg:col-span-2 lg:pr-8" style="margin-left: 20; display: inline-block;">
-                <h1 class="text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl">{{ $tv_series['name'] }}
-                    ({{ date('Y', strtotime($tv_series['first_air_date'])) }})
-                </h1>
-                <p class="text-gray-200">{{ $tv_series['tagline'] }}</p><br />
+                <h1 class="text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl">{{ $actres['name'] }}</h1>
                 <div class="flex items-center review">
                     <p class="text-gray-200">{{ __('message.review') }} </p>
                     <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
@@ -90,60 +80,39 @@
                     </svg>
                 </div><br />
                 <button type="button" id="to_watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.to_watch') }}</button>
-                <button type="button" id="watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.watched') }}</button>
+                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.actres_follow') }}</button>
                 <br /><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.description') }}</b>
-                    <p>{{ $tv_series['overview'] }}</p>
+                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.actres_biography') }}</b>
+                    <p>{{ $actres['biography'] }}</p>
                 </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.release_date') }}</b>
+                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.actres_birthday') }}</b>
                     <span
-                        class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $tv_series['first_air_date'] }}</span>
+                        class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $actres['birthday'] }}</span>
                 </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.production') }}</b>
-                    @foreach ($tv_series['production_countries'] as $productionCountries)
-                        <span
-                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $productionCountries['name'] }}</span>
-                    @endforeach
-                </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.genres') }}</b>
-                    @foreach ($tv_series['genres'] as $genre)
-                        <span
-                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $genre['name'] }}</span>
-                    @endforeach
-                </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.numbers') }}</b>
+                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.actres_place_of_birth') }}</b>
                     <span
-                        class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $tv_series['number_of_seasons'] }}
-                        {{ __('message.seasons') }}
-                        | {{ $tv_series['number_of_episodes'] }} {{ __('message.episodes') }}</span>
+                        class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $actres['place_of_birth'] }}</span>
                 </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.creators') }}</b>
-                    @foreach ($tv_series['created_by'] as $createdBy)
+                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.actres_also_know_as') }}</b>
+                    @foreach ($actres['also_known_as'] as $know)
                         <span
-                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $createdBy['name'] }}</span>
+                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $know }}</span>
                     @endforeach
                 </h3><br />
-                <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.studio') }}</b>
-                    @foreach ($tv_series['production_companies'] as $production)
-                        <span
-                            class="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ $production['name'] }}</span>
-                    @endforeach
-                </h3><br />
-            </div>
-            <h2 class="text-2xl font-bold tracking-tight text-gray-200">{{ __('message.cast') }}</h2>
-
+            </div><br />
+            <h2 class="text-2xl font-bold tracking-tight text-gray-200">
+                {{ __('message.actres_movie') }}{{ $actres['name'] }}
+            </h2>
             <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-9">
                 <div>
                     <h3 class="text-sm text-gray-300">
                         <div style="display: flex;">
-                            @foreach ($actors as $actor)
-                                <a href="/actors/{{ $actor['id'] }}">
+                            @foreach ($actresMovie as $movie)
+                                <a href="/movies/{{ $movie['id'] }}">
                                     <div style="text-align: center; margin: 5px;">
-                                        <img src="https://image.tmdb.org/t/p/w300{{ $actor['profile_path'] }}"
-                                            alt="{{ $actor['name'] }}" class="h-full w-full object-cover object-center">
-                                        <p style="margin: 8px 0;"><b>{{ $actor['name'] }}</b> ({{ $actor['character'] }})
+                                        <img src="https://image.tmdb.org/t/p/w300{{ $movie['poster_path'] }}"
+                                            alt="{{ $movie['title'] }}" class="h-full w-full object-cover object-center">
+                                        <p style="margin: 8px 0;"><b>{{ $movie['title'] }}</b>
                                         </p>
                                     </div>
                                 </a>
@@ -151,22 +120,20 @@
                         </div>
                     </h3>
                 </div>
-            </div><br />
+            </div>
             <h2 class="text-2xl font-bold tracking-tight text-gray-200">
-                {{ __('message.recommendation') }}{{ $tv_series['name'] }}
+                {{ __('message.actres_tv') }}{{ $actres['name'] }}
             </h2>
-
             <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-9">
                 <div>
                     <h3 class="text-sm text-gray-300">
                         <div style="display: flex;">
-                            @foreach ($recommendations as $recommendation)
-                                <a href="/tv-series/{{ $recommendation['id'] }}">
+                            @foreach ($actresTv as $tv)
+                                <a href="/tv-series/{{ $tv['id'] }}">
                                     <div style="text-align: center; margin: 5px;">
-                                        <img src="https://image.tmdb.org/t/p/w300{{ $recommendation['poster_path'] }}"
-                                            alt="{{ $recommendation['name'] }}"
-                                            class="h-full w-full object-cover object-center">
-                                        <p style="margin: 8px 0;"><b>{{ $recommendation['name'] }}</b>
+                                        <img src="https://image.tmdb.org/t/p/w300{{ $tv['poster_path'] }}"
+                                            alt="{{ $tv['name'] }}" class="h-full w-full object-cover object-center">
+                                        <p style="margin: 8px 0;"><b>{{ $tv['name'] }}</b>
                                         </p>
                                     </div>
                                 </a>

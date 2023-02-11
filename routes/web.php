@@ -18,12 +18,12 @@ use App\Http\Controllers\User;
 */
 
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
-Route::get('/movies', [API\Movie\MovieController::class, 'index'])->name('movies');
-Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
-Route::get('/tv-series', [API\TvSerie\TvSerieController::class, 'index'])->name('tv-series');
-Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
-Route::get('/actors', [API\Actors\ActorController::class, 'index'])->name('actors');
-Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('showActres');
+Route::get('/movies', [API\MovieController::class, 'index'])->name('movies');
+Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('movies.detailed');
+Route::get('/tv-series', [API\TvController::class, 'index'])->name('tv');
+Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('tv.detailed');
+Route::get('/actors', [API\ActorController::class, 'index'])->name('actors');
+Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('actors.detailed');
 
 
 Route::middleware(['guest'])->group(function () {
@@ -32,14 +32,14 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [Auth\RegisterController::class, 'index'])->name('register');
     Route::post('/register', [Auth\RegisterController::class, 'register'])->name('register');
     Route::get('/verify/{token}', [Auth\VerifyController::class, 'verifyUser'])->name('verify');
-    Route::get('/forgot', [Auth\ForgotPasswordController::class, 'index'])->name('forgot');
+    Route::get('/forgot', [Auth\ForgotPasswordController::class, 'index'])->name('password');
     Route::post('/forgot/reset-password', [Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.reset');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
-    Route::get('/profile', [User\UserProfileController::class, 'index'])->name('profile');
+    Route::get('/profile', [User\ProfileController::class, 'index'])->name('profile');
     Route::get('/settings', [User\SettingsController::class, 'index'])->name('settings');
-    Route::post('/settings/user-update', [User\SettingsController::class, 'update'])->name('settings.user_update');
-    Route::post('/settings/profile-update', [User\UserProfileController::class, 'update'])->name('settings.profile_update');
+    Route::post('/settings/user-update', [User\SettingsController::class, 'update'])->name('user.update');
+    Route::post('/settings/profile-update', [User\ProfileController::class, 'update'])->name('profile.update');
 });

@@ -32,7 +32,7 @@ class ForgotPasswordController extends Controller
         } catch (\Exception $e) {
             session()->flash('message', __('message.error') . $e->getMessage());
         }
-        return redirect()->route('forgot');
+        return redirect()->route('password');
     }
 
     public function broker()

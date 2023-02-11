@@ -1,12 +1,6 @@
-@extends('layouts.nav')
-@section('title', 'Film')
-
+@extends('layouts.skeleton')
+@section('title', 'Strona główna')
 @section('content')
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="bg-gray-800">
         <div class="pt-6">
             <!-- Product info -->

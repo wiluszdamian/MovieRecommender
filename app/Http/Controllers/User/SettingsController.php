@@ -18,7 +18,7 @@ class SettingsController extends Controller
         $userId = \Auth::id();
         $userProfile = UsersProfile::where('id', $userId)->first();
         $user = User::where('id', $userId)->first();
-        return view('user.settings', compact('userProfile', 'user'));
+        return view('users.settings', compact('userProfile', 'user'));
     }
 
     public function update(Request $request)
@@ -53,7 +53,7 @@ class SettingsController extends Controller
                 $updateData['password'] = Hash::make($validatedData['now_password']);
             }
             $updateResult = $user->update($updateData);
-            session()->flash('message', __('message.update_success'));
+            $this->alert('success', 'Basic Alert');
         }
 
         return redirect()->route('settings');

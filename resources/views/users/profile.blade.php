@@ -1,6 +1,5 @@
-@extends('layouts.nav')
-@section('title', 'Profile')
-
+@extends('layouts.skeleton')
+@section('title', 'Profil')
 @section('content')
     <div class="bg-gray-800 text-gray-200">
         <div class="pt-6">

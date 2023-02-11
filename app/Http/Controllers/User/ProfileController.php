@@ -8,7 +8,7 @@ use App\Models\UsersProfile;
 use App\Models\User;
 
 
-class UserProfileController extends Controller
+class ProfileController extends Controller
 {
 
     /**
@@ -20,7 +20,7 @@ class UserProfileController extends Controller
         $userId = \Auth::id();
         $userProfile = UsersProfile::where('id', $userId)->first();
         $user = User::where('id', $userId)->first();
-        return view('user.profile', compact('userProfile', 'user'));
+        return view('users.profile', compact('userProfile', 'user'));
     }
 
     /**
@@ -85,6 +85,6 @@ class UserProfileController extends Controller
         } catch (\Exception $e) {
             session()->flash('message', __('message.error') . $e->getMessage());
         }
-        return redirect()->route('forgot');
+        return redirect()->route('settings');
     }
 }
