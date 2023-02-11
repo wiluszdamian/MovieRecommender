@@ -15,7 +15,7 @@
                     {{ __('message.forgot_password') }}</h2><br />
                 <p class="text-center tracking-tight text-gray-300">{{ __('message.forgot_info') }}</p>
             </div>
-            <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+            <form class="mt-8 space-y-6" action="{{ route('forgot.reset_password') }}" method="POST">
                 @csrf
                 <input type="hidden" name="remember" value="true">
                 <div class="-space-y-px rounded-md shadow-sm">
@@ -24,12 +24,6 @@
                         <input id="email" name="email" type="email" autocomplete="email" required
                             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                             placeholder="{{ __('message.email_address') }}">
-                    </div>
-                    <div>
-                        <label for="username" class="sr-only">{{ __('message.username') }}</label>
-                        <input id="username" name="username" type="text" autocomplete="current-password" required
-                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                            placeholder="{{ __('message.username') }}">
                     </div>
                 </div>
                 <div>

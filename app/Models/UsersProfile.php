@@ -14,6 +14,5 @@ class UsersProfile extends Model
         'about_me',
         'country',
         'city',
-        'avatar_url',
     ];
 }

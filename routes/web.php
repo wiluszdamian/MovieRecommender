@@ -33,6 +33,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [Auth\RegisterController::class, 'register'])->name('register');
     Route::get('/verify/{token}', [Auth\VerifyController::class, 'verifyUser'])->name('verify');
     Route::get('/forgot', [Auth\ForgotPasswordController::class, 'index'])->name('forgot');
+    Route::post('/forgot/reset-password', [Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forgot.reset_password');
 });
 
 Route::middleware(['auth'])->group(function () {
