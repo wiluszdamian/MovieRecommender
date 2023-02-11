@@ -18,8 +18,11 @@ use App\Http\Controllers\User;
 */
 
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
+Route::get('/movies', [API\IndexController::class, 'showMovie'])->name('showMovie');
 Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('showMovie');
+Route::get('/tv-series', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
 Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('showTvseries');
+Route::get('/actors', [API\IndexController::class, 'showActres'])->name('showActres');
 Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('showActres');
 
 
@@ -36,8 +39,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
     Route::get('/profile', [User\UserProfileController::class, 'index'])->name('profile');
     Route::get('/settings', [User\SettingsController::class, 'index'])->name('settings');
-    Route::post('/settings', [User\SettingsController::class, 'updateEmail'])->name('settings');
-    Route::post('/settings', [User\SettingsController::class, 'updateUsername'])->name('settings');
-    Route::post('/settings', [User\SettingsController::class, 'updatePassword'])->name('settings');
+    Route::post('/settings/user-update', [User\SettingsController::class, 'update'])->name('settings.user_update');
     Route::post('/settings/profile-update', [User\UserProfileController::class, 'update'])->name('settings.profile_update');
 });

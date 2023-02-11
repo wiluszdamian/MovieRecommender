@@ -37,7 +37,7 @@
                                         </span>
                                         <input type="text" name="twitter-url" id="twitter-url"
                                             class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="{{ __('message.settings_socials_twitter_placeholder') }}">
+                                            placeholder="{{ $userProfile->twitter_url }}">
                                     </div>
                                     <div class="mt-1 flex rounded-md shadow-sm">
                                         <span
@@ -50,7 +50,7 @@
                                         </span>
                                         <input type="text" name="reddit-url" id="reddit-url"
                                             class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="{{ __('message.settings_socials_reddit_placeholder') }}">
+                                            placeholder="{{ $userProfile->reddit_url }}">
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                 <div class="mt-1">
                                     <textarea id="about-me" name="about-me" rows="3"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                        placeholder="{{ __('message.settings_about_me_placeholder') }}"></textarea>
+                                        placeholder="{{ $userProfile->about_me }}"></textarea>
                                 </div>
                                 <p class="mt-2 text-sm text-gray-500">{{ __('message.settings_about_me_description') }}</p>
                             </div>
@@ -71,7 +71,7 @@
                                     class="block text-sm font-medium text-gray-700">{{ __('message.settings_country') }}</label>
                                 <input type="text" name="country" id="country" autocomplete="given-name"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    placeholder="{{ __('message.settings_country_placeholder') }}">
+                                    placeholder="{{ $userProfile->country }}">
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
@@ -79,15 +79,7 @@
                                     class="block text-sm font-medium text-gray-700">{{ __('message.settings_city') }}</label>
                                 <input type="text" name="city" id="city" autocomplete="given-name"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    placeholder="{{ __('message.settings_city_placeholder') }}">
-                            </div>
-
-                            <div class="col-span-6 sm:col-span-4">
-                                <label for="avatar-url"
-                                    class="block text-sm font-medium text-gray-700">{{ __('message.settings_avatar_url') }}</label>
-                                <input type="text" name="avatar-url" id="avatar-url" autocomplete="given-name"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                    placeholder="{{ __('message.settings_avatar_url_placeholder') }}">
+                                    placeholder="{{ $userProfile->city }}">
                             </div>
 
                         </div>
@@ -116,7 +108,7 @@
                 </div>
             </div>
             <div class="mt-5 md:col-span-2 md:mt-0">
-                <form action="{{ route('settings') }}" method="POST">
+                <form action="{{ route('settings.user_update') }}" method="POST">
                     @csrf
                     <div class="overflow-hidden shadow sm:rounded-md">
                         <div class="bg-white px-4 py-5 sm:p-6">
@@ -125,14 +117,16 @@
                                     <label for="name"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.settings_username') }}</label>
                                     <input type="text" name="name" id="name" autocomplete="given-name"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        placeholder="{{ $user->name }}">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="email"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.settings_email') }}</label>
                                     <input type="email" name="email" id="email" autocomplete="email"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        placeholder="{{ $user->email }}">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
@@ -140,7 +134,8 @@
                                         class="block text-sm font-medium text-gray-700">{{ __('message.settings_now_password') }}</label>
                                     <input type="password" name="now_password" id="now_password" autocomplete="email"
                                         minlength="6"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        placeholder="********">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
@@ -148,7 +143,8 @@
                                         class="block text-sm font-medium text-gray-700"><b>{{ __('message.settings_current_password') }}</b></label>
                                     <input type="password" name="currently_password" id="currently_password"
                                         minlength="6" autocomplete="email"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                        placeholder="********">
                                 </div>
 
                             </div>

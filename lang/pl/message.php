@@ -71,7 +71,7 @@ return [
     'password' => 'Hasło',
     'password_confirmed' => 'Potwierdź Hasło',
     'remember_me' => 'Zapamiętaj mnie',
-    'forgot_your_password' => 'Utracone hasło?',
+    'forgot_your_password' => 'Nie pamiętasz hasła?',
     'create_a_new_account' => 'Stwórz nowe konto',
     'do_you_already_have_an_account' => 'Posiadasz aktywne konto?',
     'name' => 'Użytkownik',
@@ -91,10 +91,17 @@ return [
     'username' => 'Użytkownik',
     'new_password' => 'Nowe hasło',
     'currently_password' => 'Obecne hasło',
-    'password_incorrect' => 'Obecne hasło jest nieprawidłowe',
-    'successfully_updated' => 'Poprawnie zaktualizowano',
     'enter_current_password' => 'Aby wprowadzić zmiany wprowadź obecne hasło',
 
+
+    // Messages
+    'invalid_user_id' => 'Nieprawidlowy identyfikator użytkownika',
+    'unable_create' => 'Nie można utworzyć lub uzyskać profilu użytkownika',
+    'no_data_to_update' => 'Brak danych do zaktualizowania',
+    'unable_to_update_user_profile' => 'Błąd podczas aktualizowania profilu użytkownika',
+    'update_success' => 'Sukces! Dane zaktualizowano pomyślnie',
+    'password_update_error' => 'Obecne hasło jest nieprawidłowe',
+    'error' => 'Problem: ',
 
     // Actres
     'actres_follow' => 'Obserwuj',
@@ -139,7 +146,7 @@ return [
     'settings_avatar_url_placeholder' => 'https://linkdoavatara.pl/przyklad.png',
     'settings_user' => 'Ustawienia użytkownika',
     'settings_user_description' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło.',
-    'settings_username' => 'Użytkownik',
+    'settings_username' => 'Nazwa użytkownika',
     'settings_email' => 'Adres e-mail',
     'settings_now_password' => 'Nowe hasło',
     'settings_current_password' => 'Obecne hasło',

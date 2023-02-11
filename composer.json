@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "forxer/laravel-gravatar": "^1.8",
         "guzzlehttp/guzzle": "^7.5",
         "jantinnerezo/livewire-alert": "^2.2",
         "josegus/laravel-flash": "^1.3",

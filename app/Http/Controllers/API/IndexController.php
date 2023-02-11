@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
 use Illuminate\Routing\Controller;
+use App\Models\User;
+use App\Models\UsersProfile;
 
 class IndexController extends Controller
 {
@@ -15,9 +17,10 @@ class IndexController extends Controller
      */
     public function index()
     {
+        //TODO: Add a Helper that will handle this in a simpler way
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
-        
+
         $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/movie/popular?api_key={$apiKey}&language=pl");
         $popularMovies = json_decode($popularMoviesResponse->getBody(), true)['results'];
         $popularMovies = array_slice($popularMovies, 0, 5);
@@ -25,7 +28,7 @@ class IndexController extends Controller
         $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/popular?api_key={$apiKey}&language=pl");
         $popularTvSeries = json_decode($popularTvSeriesResponse->getBody(), true)['results'];
         $popularTvSeries = array_slice($popularTvSeries, 0, 5);
-               
+
         return view('index', [
             'popularMovies' => $popularMovies,
             'popularTvSeries' => $popularTvSeries
@@ -39,6 +42,7 @@ class IndexController extends Controller
      */
     public function showMovie($id)
     {
+        //TODO: Add a Helper that will handle this in a simpler way
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 
@@ -59,7 +63,7 @@ class IndexController extends Controller
             'recommendations' => $recommendations
         ]);
     }
-    
+
     /**
      * Summary of showTvSeries
      * @param mixed $id
@@ -67,6 +71,7 @@ class IndexController extends Controller
      */
     public function showTvSeries($id)
     {
+        //TODO: Add a Helper that will handle this in a simpler way
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 
@@ -96,6 +101,7 @@ class IndexController extends Controller
      */
     public function showActres($id)
     {
+        //TODO: Add a Helper that will handle this in a simpler way
         $client = new Client();
         $apiKey = env('API_TMDB_KEY');
 

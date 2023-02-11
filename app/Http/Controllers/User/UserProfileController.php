@@ -4,57 +4,61 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\UserProfile;
+use App\Models\UsersProfile;
+use App\Models\User;
 
 
 class UserProfileController extends Controller
 {
+
     /**
-     * Display the user profile settings view.
+     * Display the user profile information.
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        return view('user.profile');
+        $userId = \Auth::id();
+        $userProfile = UsersProfile::where('id', $userId)->first();
+        $user = User::where('id', $userId)->first();
+        return view('user.profile', compact('userProfile', 'user'));
     }
 
     /**
-     * Update user profile.
-     *
-     * Validates the incoming data and updates the user profile with the provided data. If any of the data fields are missing or invalid, returns an error.
-     *
-     * @param Request $request The incoming HTTP request
-     *
-     * @return \Illuminate\Http\JsonResponse Returns a JSON response with a success or error message
+     * Update the user profile information.
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request)
     {
         try {
-            //TODO: Move validation from controller to Request class.
-            //TODO: JSON response handling 
+            //TODO: Move validations outside the controller
+            //TODO: Add validations in such a way as to avoid SQL Injection
 
             $validatedData = $request->validate([
                 'reddit-url' => 'nullable|string',
                 'twitter-url' => 'nullable|string',
-                'avatar-url' => 'nullable|string',
-                'about-me' => 'nullable|string',
+                'about-me' => 'nullable|string|max:255',
                 'country' => 'nullable|string',
                 'city' => 'nullable|string',
             ]);
+
             $userId = \Auth::id();
+
             if (!$userId) {
-                return response()->json(['message' => 'Error: invalid user id'], 500);
+                session()->flash('message', __('message.invalid_user_id'));
             }
-            $userProfile = UserProfile::firstOrCreate([
+
+            $userProfile = UsersProfile::firstOrCreate([
                 'id' => $userId,
             ]);
+
             if (!$userProfile) {
-                return response()->json(['message' => 'Error: unable to create or retrieve user profile'], 500);
+                session()->flash('message', __('message.unable_create'));
             }
+
             $updateData = [
                 'reddit_url' => $validatedData['reddit-url'],
                 'twitter_url' => $validatedData['twitter-url'],
-                'avatar_url' => $validatedData['avatar-url'],
                 'about_me' => $validatedData['about-me'],
                 'country' => $validatedData['country'],
                 'city' => $validatedData['city'],
@@ -67,15 +71,20 @@ class UserProfileController extends Controller
             }
 
             if (!$updateData) {
-                return response()->json(['message' => 'Error: no data to update'], 500);
+                session()->flash('message', __('message.no_data_to_update'));
+            } else {
+                $updateResult = $userProfile->update($updateData);
+
+                if (!$updateResult) {
+                    session()->flash('message', __('message.unable_to_update_user_profile'));
+                }
+
+                session()->flash('message', __('message.update_success'));
             }
-            $updateResult = $userProfile->update($updateData);
-            if (!$updateResult) {
-                return response()->json(['message' => 'Error: unable to update user profile'], 500);
-            }
-            return response()->json(['message' => 'Profile updated successfully!'], 200);
+
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error: ' . $e->getMessage()], 500);
+            session()->flash('message', __('message.error') . $e->getMessage());
         }
+        return redirect()->route('settings');
     }
 }
