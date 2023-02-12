@@ -12,13 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users_profiles', function (Blueprint $table) {
-            $table->string('id')->unique;
-            $table->string('twitter_url')->nullable();
-            $table->string('reddit_url')->nullable();
-            $table->string('about_me')->nullable();
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
+        Schema::create('users_watched', function (Blueprint $table) {
+            $table->string('id');
+            $table->string('movie_id');
+            $table->string('movie_genres');
+            $table->boolean('viewed');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users_profiles');
+        Schema::dropIfExists('users_watched');
     }
 };

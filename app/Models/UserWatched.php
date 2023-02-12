@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UsersProfile extends Model
+class UserWatched extends Model
 {
     protected $fillable = [
         'id',
-        'reddit_url',
-        'twitter_url',
-        'about_me',
-        'country',
-        'city',
+        'movie_id',
+        'movie_genres',
+        'viewed',
     ];
 }

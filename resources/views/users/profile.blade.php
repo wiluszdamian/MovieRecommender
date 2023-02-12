@@ -7,11 +7,11 @@
                 <div class="px-6">
                     <div class="flex flex-wrap justify-center">
                         <img class="h-60 w-60 rounded-full" src="{{ gravatar()->avatar($user->email) }}"
-                            alt="{{ $userProfile->name }}">
+                            alt="{{ $user->name }}">
                         <div class="mt-5 w-full px-4 text-center">
                             <div class="text-center">
                                 <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                                    {{ $userProfile->name }}
+                                    {{ $user->name }}
                                 </h3>
                                 <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                                     <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>

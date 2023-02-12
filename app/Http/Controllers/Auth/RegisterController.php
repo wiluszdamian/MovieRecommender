@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\VerifyEmail;
 use App\Models\User;
+use App\Models\UsersProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,6 +46,15 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'token' => str_random(40)
+        ]);
+
+        $userProfile = UsersProfile::create([
+            'id' => $user->id,
+            'reddit_url' => '',
+            'twitter_url' => '',
+            'about_me' => '',
+            'country' => '',
+            'city' => '',
         ]);
 
         Mail::to($user->email)->send(new VerifyEmail($user));
