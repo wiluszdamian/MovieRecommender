@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\API;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\User;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +19,11 @@ use App\Http\Controllers\User;
 
 Route::get('/', [API\IndexController::class, 'index'])->name('index');
 Route::get('/movies', [API\MovieController::class, 'index'])->name('movies');
-Route::get('/movies/{id}', [API\IndexController::class, 'showMovie'])->name('movies.detailed');
+Route::get('/movies/{id}', [API\MovieController::class, 'details'])->name('movies.details');
 Route::get('/tv-series', [API\TvController::class, 'index'])->name('tv');
-Route::get('/tv-series/{id}', [API\IndexController::class, 'showTvSeries'])->name('tv.detailed');
-Route::get('/actors', [API\ActorController::class, 'index'])->name('actors');
-Route::get('/actors/{id}', [API\IndexController::class, 'showActres'])->name('actors.detailed');
+Route::get('/tv-series/{id}', [API\TvController::class, 'details'])->name('tv.details');
+Route::get('/actors', [API\PersonController::class, 'index'])->name('actors');
+Route::get('/actors/{id}', [API\PersonController::class, 'details'])->name('person.details');
 Route::get('/language/{locale}', [LanguageController::class, 'changeLanguage'])->name('language');
 
 
@@ -43,4 +43,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/settings', [User\UserController::class, 'index'])->name('settings');
     Route::post('/settings/user-update', [User\UserController::class, 'update'])->name('user.update');
     Route::post('/settings/profile-update', [User\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/add-to-watched', [API\MovieController::class, 'save'])->name('movie.watched');
 });

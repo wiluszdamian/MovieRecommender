@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
+    //TODO: Refactor this ugly code.
     /**
      * Display the user profile page.
      *

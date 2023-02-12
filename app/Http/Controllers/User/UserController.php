@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
+    //TODO: Refactor this ugly code.
     /** 
      * Show the user settings page.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

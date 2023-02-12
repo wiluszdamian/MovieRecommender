@@ -12,114 +12,29 @@ use App\Models\UsersProfile;
 class IndexController extends Controller
 {
     /**
-     * Summary of index
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * The `index` method is responsible for fetching the trending movies, TV series and persons from the past week
+     * and returning the view with these data.
+     *
+     * @return \Illuminate\View\View The view containing the trending movies, TV series and persons data.
      */
     public function index()
     {
-        //TODO: Add a Helper that will handle this in a simpler way
-        $client = new Client();
-        $apiKey = env('API_TMDB_KEY');
+        // Fetch trending movies from the past week
+        $trendingMovies = getDataFromApi("trending/movie/week")['results'];
+        $trendingMovies = array_slice($trendingMovies, 0, 5);
 
-        $popularMoviesResponse = $client->get("https://api.themoviedb.org/3/trending/movie/week?api_key={$apiKey}&language=pl");
-        $popularMovies = json_decode($popularMoviesResponse->getBody(), true)['results'];
-        $popularMovies = array_slice($popularMovies, 0, 5);
+        // Fetch trending TVs from the past week
+        $trendingTvs = getDataFromApi("trending/tv/week")['results'];
+        $trendingTvs = array_slice($trendingTvs, 0, 5);
 
-        $popularTvSeriesResponse = $client->get("https://api.themoviedb.org/3/trending/tv/week?api_key={$apiKey}&language=pl");
-        $popularTvSeries = json_decode($popularTvSeriesResponse->getBody(), true)['results'];
-        $popularTvSeries = array_slice($popularTvSeries, 0, 5);
+        // Fetch trending persons from the past week
+        $trendingPerson = getDataFromApi("trending/person/week")['results'];
+        $trendingPerson = array_slice($trendingPerson, 0, 5);
 
         return view('home.index', [
-            'popularMovies' => $popularMovies,
-            'popularTvSeries' => $popularTvSeries
-        ]);
-    }
-
-    /**
-     * Summary of showMovie
-     * @param mixed $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function showMovie($id)
-    {
-        //TODO: Add a Helper that will handle this in a simpler way
-        $client = new Client();
-        $apiKey = env('API_TMDB_KEY');
-
-        $movieResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}?api_key={$apiKey}&language=pl");
-        $movie = json_decode($movieResponse->getBody(), true);
-
-        $recommendationsResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/recommendations?api_key={$apiKey}&language=pl");
-        $recommendations = json_decode($recommendationsResponse->getBody(), true)['results'];
-        $recommendations = array_slice($recommendations, 0, 10);
-
-        $actorResponse = $client->get("https://api.themoviedb.org/3/movie/{$id}/credits?api_key={$apiKey}&language=pl");
-        $actors = json_decode($actorResponse->getBody(), true)['cast'];
-        $actors = array_slice($actors, 0, 10);
-
-        return view('movies.details', [
-            'movie' => $movie,
-            'actors' => $actors,
-            'recommendations' => $recommendations
-        ]);
-    }
-
-    /**
-     * Summary of showTvSeries
-     * @param mixed $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function showTvSeries($id)
-    {
-        //TODO: Add a Helper that will handle this in a simpler way
-        $client = new Client();
-        $apiKey = env('API_TMDB_KEY');
-
-        $tvSeriesResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}?api_key={$apiKey}&language=pl");
-        $tvSeries = json_decode($tvSeriesResponse->getBody(), true);
-
-        $recommendationsResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}/recommendations?api_key={$apiKey}&language=pl");
-        $recommendations = json_decode($recommendationsResponse->getBody(), true)['results'];
-        $recommendations = array_slice($recommendations, 0, 10);
-
-        $actorResponse = $client->get("https://api.themoviedb.org/3/tv/{$id}/credits?api_key={$apiKey}&language=pl");
-        $actors = json_decode($actorResponse->getBody(), true)['cast'];
-        $actors = array_slice($actors, 0, 10);
-
-        return view('tv.details', [
-            'tv_series' => $tvSeries,
-            'actors' => $actors,
-            'recommendations' => $recommendations
-        ]);
-    }
-
-    /**
-     * Summary of showActres
-     *
-     * @param mixed $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function showActres($id)
-    {
-        //TODO: Add a Helper that will handle this in a simpler way
-        $client = new Client();
-        $apiKey = env('API_TMDB_KEY');
-
-        $actresResponse = $client->get("https://api.themoviedb.org/3/person/{$id}?api_key={$apiKey}&language=pl");
-        $actres = json_decode($actresResponse->getBody(), true);
-
-        $actresMovieResponse = $client->get("https://api.themoviedb.org/3/person/{$id}/movie_credits?api_key={$apiKey}&language=pl");
-        $actresMovie = json_decode($actresMovieResponse->getBody(), true)['cast'];
-        $actresMovie = array_slice($actresMovie, 0, 10);
-
-        $actresTvResponse = $client->get("https://api.themoviedb.org/3/person/{$id}/tv_credits?api_key={$apiKey}&language=pl");
-        $actresTv = json_decode($actresTvResponse->getBody(), true)['cast'];
-        $actresTv = array_slice($actresTv, 0, 10);
-
-        return view('actors.details', [
-            'actres' => $actres,
-            'actresMovie' => $actresMovie,
-            'actresTv' => $actresTv,
+            'popularMovies' => $trendingMovies,
+            'popularTvSeries' => $trendingTvs,
+            'trendingPersons' => $trendingPerson
         ]);
     }
 }

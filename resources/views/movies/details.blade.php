@@ -1,5 +1,5 @@
 @extends('layouts.skeleton')
-@section('title', 'Strona główna')
+@section('title', 'Film')
 @section('content')
     <div class="bg-gray-800">
         <div class="pt-6">
@@ -95,11 +95,18 @@
                         </path>
                     </svg>
                 </div><br />
-                <button type="button" id="to_watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.to_watch') }}</button>
-                <button type="button" id="watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.watched') }}</button>
-                <br /><br />
+                @auth
+                    <form class="mt-3" style="float: left;" action="{{ route('movie.watched') }}" method="POST">
+                        @csrf
+                        <button type="submit" id="to_watched"
+                            class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                            {{ __('message.to_watch') }}</button>
+                    </form>
+                    <form class="mt-3" style="float: right:" action="" method="POST">
+                        <button type="button" id="watched"
+                            class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.watched') }}</button>
+                    </form><br />
+                @endauth
                 <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.description') }}</b>
                     <p>{{ $movie['overview'] }}</p>
                 </h3><br />

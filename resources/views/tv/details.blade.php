@@ -94,11 +94,13 @@
                         </path>
                     </svg>
                 </div><br />
-                <button type="button" id="to_watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.to_watch') }}</button>
-                <button type="button" id="watched"
-                    class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.watched') }}</button>
-                <br /><br />
+                @auth
+                    <button type="button" id="to_watched"
+                        class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.to_watch') }}</button>
+                    <button type="button" id="watched"
+                        class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">{{ __('message.watched') }}</button>
+                    <br /><br />
+                @endauth
                 <h3 class="text-sm font-medium text-gray-200"><b>{{ __('message.description') }}</b>
                     <p>{{ $tv_series['overview'] }}</p>
                 </h3><br />
