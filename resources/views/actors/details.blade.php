@@ -1,10 +1,22 @@
 @extends('layouts.skeleton')
-@section('title', 'Strona główna')
+@section('title', 'Aktorzy')
 @section('content')
     <div class="bg-gray-800">
         <div class="pt-6">
-            <!-- Product info -->
             <div class="lg:col-span-2 lg:pr-8" style="margin-left: 20; display: inline-block;">
+                <div style="float: left; margin-right: 2%">
+                    <h3 class="text-sm text-gray-300">
+                        <div>
+                            <a href="/actors/{{ $actres['id'] }}">
+                                <div style="text-align: center; margin: 2%;">
+                                    <img src="https://image.tmdb.org/t/p/w400{{ $actres['profile_path'] }}" alt=""
+                                        class="h-full w-full object-cover object-center">
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </h3>
+                </div><br />
                 <h1 class="text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl">{{ $actres['name'] }}</h1>
                 <div class="flex items-center review">
                     <p class="text-gray-200">{{ __('message.review') }} </p>

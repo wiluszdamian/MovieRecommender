@@ -1,14 +1,22 @@
 @extends('layouts.skeleton')
 @section('title', 'Serial')
 @section('content')
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="bg-gray-800">
         <div class="pt-6">
             <div class="lg:col-span-2 lg:pr-8" style="margin-left: 20; display: inline-block;">
+                <div style="float: left; margin-right: 2%">
+                    <h3 class="text-sm text-gray-300">
+                        <div>
+                            <a href="/tv-series/{{ $tv_series['id'] }}">
+                                <div style="text-align: center; margin: 2%;">
+                                    <img src="https://image.tmdb.org/t/p/w400{{ $tv_series['poster_path'] }}" alt=""
+                                        class="h-full w-full object-cover object-center">
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </h3>
+                </div><br />
                 <h1 class="text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl">{{ $tv_series['name'] }}
                     ({{ date('Y', strtotime($tv_series['first_air_date'])) }})
                 </h1>
@@ -140,7 +148,8 @@
                                     <div style="text-align: center; margin: 5px;">
                                         <img src="https://image.tmdb.org/t/p/w300{{ $actor['profile_path'] }}"
                                             alt="{{ $actor['name'] }}" class="h-full w-full object-cover object-center">
-                                        <p style="margin: 8px 0;"><b>{{ $actor['name'] }}</b> ({{ $actor['character'] }})
+                                        <p style="margin: 8px 0;"><b>{{ $actor['name'] }}</b>
+                                            ({{ $actor['character'] }})
                                         </p>
                                     </div>
                                 </a>

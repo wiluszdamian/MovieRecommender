@@ -5,6 +5,19 @@
         <div class="pt-6">
             <!-- Product info -->
             <div class="lg:col-span-2 lg:pr-8" style="margin-left: 20; display: inline-block;">
+                <div style="float: left; margin-right: 2%">
+                    <h3 class="text-sm text-gray-300">
+                        <div>
+                            <a href="/movies/{{ $movie['id'] }}">
+                                <div style="text-align: center; margin: 2%;">
+                                    <img src="https://image.tmdb.org/t/p/w400{{ $movie['poster_path'] }}" alt=""
+                                        class="h-full w-full object-cover object-center">
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </h3>
+                </div><br />
                 <h1 class="text-2xl font-bold tracking-tight text-gray-200 sm:text-3xl">{{ $movie['title'] }}
                     ({{ date('Y', strtotime($movie['release_date'])) }})
                 </h1>

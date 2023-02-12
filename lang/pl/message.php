@@ -34,8 +34,8 @@ return [
     'recommendation' => 'Podobne do: ',
     'currency' => 'USD',
     'vote' => 'Ocena: ',
-    'watched' => 'Obejrzane',
-    'to_watch' => 'Do obejrzenia',
+    'watched' => 'Dodaj do obejrzanych',
+    'to_watch' => 'Dodaj do mojej listy',
     'description' => 'Opis: ',
     'read_more' => 'Więcej',
     'open_main_menu' => 'Otwórz główne menu',
@@ -120,7 +120,7 @@ return [
 
     // Profile
     'profile_watched' => 'Obejrzane',
-    'profile_to_watched' => 'Do obejrzenia',
+    'profile_to_watched' => 'Chce obejrzeć',
     'profile_review' => 'Ocenione',
     'profile_country' => 'Kraj: ',
     'profile_city' => "Miasto: ",
