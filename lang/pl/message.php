@@ -157,7 +157,7 @@ return [
     'settings_language' => 'Język',
     'settings_notifications' => 'Powiadomienia',
     'settings_notifications_description' => 'Skonfiguruj powiadomienia przychodzące na adres e-mail',
-    'settings_notifications_saving' => 'Lista:',
+    'settings_notifications_saving' => 'Rekomendacje:',
     'settings_notifications_movies' => 'Filmy',
     'settings_notifications_movies_description' => 'Powiadomienie raz w tygodniu o rekomendowanych filmach.',
     'settings_notifications_tv' => 'Seriale',

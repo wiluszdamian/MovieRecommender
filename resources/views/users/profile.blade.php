@@ -6,17 +6,13 @@
             <div class="relative flex flex-col min-w-0 break-words bg-gray-800 w-full">
                 <div class="px-6">
                     <div class="flex flex-wrap justify-center">
-                        <img class="h-60 w-60 rounded-full" src="{{ gravatar()->avatar($user->email) }}"
+                        <img class="h-30 w-30 rounded-full" style="float: left" src="{{ gravatar()->avatar($user->email) }}"
                             alt="{{ $user->name }}">
                         <div class="mt-5 w-full px-4 text-center">
                             <div class="text-center">
                                 <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                                     {{ $user->name }}
                                 </h3>
-                                <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                                    <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                    {{ $userProfile->country }}, {{ $userProfile->city }}
-                                </div>
                             </div>
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center">
@@ -40,21 +36,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                            {{ __('message.profile_about_me') }}
-                        </h3>
-                        <div class="flex flex-wrap justify-center">
-                            <div class="w-full lg:w-9/12 px-4">
-                                <p class="mb-4">
-                                    {{ $userProfile->about_me }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
