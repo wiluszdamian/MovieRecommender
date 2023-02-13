@@ -97,6 +97,11 @@ return [
     'navbar_language_en' => 'English',
     'navbar_language_pl' => 'Polski',
 
+    // Homepage
+    'homepage_popular_movies' => 'Popularne filmy w ostatnim tygodniu',
+    'homepage_popular_tvs' => 'Popularne seriale w ostatnim tygodniu',
+    'homepage_popular_persons' => 'Popularni aktorzy w ostatnim tygodniu',
+
     // Messages
     'invalid_user_id' => 'Nieprawidlowy identyfikator użytkownika',
     'unable_create' => 'Nie można utworzyć lub uzyskać profilu użytkownika',
@@ -134,21 +139,29 @@ return [
     'profile_recommendations_tv' => 'Polecane seriale',
 
     // Settings 
-    'settings_profile' => 'Profil',
-    'settings_profile_description' => 'Te informacje będą wyświetlane publicznie',
-    'settings_socials' => 'Społeczności',
-    'settings_about_me' => 'O mnie',
-    'settings_about_me_description' => 'Krótki opis o sobie',
-    'settings_country' => "Kraj: ",
-    'settings_city' => "Miasto: ",
-    'settings_avatar_url' => 'Link do Avatara',
-    'settings_avatar_url_placeholder' => 'https://linkdoavatara.pl/przyklad.png',
+    // 'settings_profile' => 'Profil',
+    // 'settings_profile_description' => 'Te informacje będą wyświetlane publicznie',
+    // 'settings_socials' => 'Społeczności',
+    // 'settings_about_me' => 'O mnie',
+    // 'settings_about_me_description' => 'Krótki opis o sobie',
+    // 'settings_country' => "Kraj: ",
+    // 'settings_city' => "Miasto: ",
+    // 'settings_avatar_url' => 'Link do Avatara',
+    // 'settings_avatar_url_placeholder' => 'https://linkdoavatara.pl/przyklad.png',
     'settings_user' => 'Ustawienia użytkownika',
-    'settings_user_description' => 'Tutaj możesz edytować ustawienia swojego konta. Aby zapisać dane, wprowadź aktualne hasło',
+    'settings_user_description' => 'Skonfiguruj ustawienia użytkownika, aby zapisać wprowadzć aktualne hasło.',
     'settings_username' => 'Nazwa użytkownika',
     'settings_email' => 'Adres e-mail',
     'settings_now_password' => 'Nowe hasło',
-    'settings_current_password' => 'Obecne hasło',
+    'settings_current_password' => 'Aktualne hasło',
+    'settings_language' => 'Język',
+    'settings_notifications' => 'Powiadomienia',
+    'settings_notifications_description' => 'Skonfiguruj powiadomienia przychodzące na adres e-mail',
+    'settings_notifications_saving' => 'Lista:',
+    'settings_notifications_movies' => 'Filmy',
+    'settings_notifications_movies_description' => 'Powiadomienie raz w tygodniu o rekomendowanych filmach.',
+    'settings_notifications_tv' => 'Seriale',
+    'settings_notifications_tv_description' => 'Powiadomienie raz w tygodniu o rekomendowanych serialach.',
     'settings_save' => 'Zapisz',
 
     // Emails

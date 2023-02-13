@@ -2,7 +2,7 @@
 @section('title', 'Strona główna')
 @section('content')
     <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">
-        {{ __('message.most_popular_movies') }}</p>
+        {{ __('message.homepage_popular_movies') }}</p>
     <div class="popularMovies" style="display: flex;">
         @foreach ($popularMovies as $movie)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -38,7 +38,7 @@
     </div>
     <br />
     <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">
-        {{ __('message.most_popular_tvseries') }}</p>
+        {{ __('message.homepage_popular_tvs') }}</p>
     <div class="popularMovies" style="display: flex;">
         @foreach ($popularTvSeries as $tvSerie)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
@@ -73,7 +73,7 @@
         @endforeach
     </div>
     <p class="center medium-w-lg text-3xl font-semibold leading-normal text-gray-900 dark:text-white">
-        {{ __('message.most_popular_tvseries') }}</p>
+        {{ __('message.homepage_popular_persons') }}</p>
     <div class="popularMovies" style="display: flex;">
         @foreach ($trendingPersons as $trendingPerson)
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"

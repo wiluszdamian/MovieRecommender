@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\API;
+use App\Http\Controllers\App;
 use App\Http\Controllers\Auth;
-use App\Http\Controllers\User;
+use App\Http\Controllers\Account;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +17,14 @@ use App\Http\Controllers\LanguageController;
 |
 */
 
-Route::get('/', [API\IndexController::class, 'index'])->name('index');
-Route::get('/movies', [API\MovieController::class, 'index'])->name('movies');
-Route::get('/movies/{id}', [API\MovieController::class, 'details'])->name('movies.details');
-Route::get('/tv-series', [API\TvController::class, 'index'])->name('tv');
-Route::get('/tv-series/{id}', [API\TvController::class, 'details'])->name('tv.details');
-Route::get('/actors', [API\PersonController::class, 'index'])->name('actors');
-Route::get('/actors/{id}', [API\PersonController::class, 'details'])->name('person.details');
-Route::get('/language/{locale}', [LanguageController::class, 'changeLanguage'])->name('language');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('/movies', [App\MovieController::class, 'index'])->name('movies');
+Route::get('/movies/{id}', [App\MovieController::class, 'details'])->name('movies.details');
+Route::get('/tv-series', [App\TvController::class, 'index'])->name('tv');
+Route::get('/tv-series/{id}', [App\TvController::class, 'details'])->name('tv.details');
+Route::get('/actors', [App\PersonController::class, 'index'])->name('actors');
+Route::get('/actors/{id}', [App\PersonController::class, 'details'])->name('person.details');
+Route::get('/language/{locale}', [App\LanguageController::class, 'changeLanguage'])->name('language');
 
 
 Route::middleware(['guest'])->group(function () {
@@ -39,9 +39,9 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
-    Route::get('/profile', [User\ProfileController::class, 'index'])->name('profile');
-    Route::get('/settings', [User\UserController::class, 'index'])->name('settings');
-    Route::post('/settings/user-update', [User\UserController::class, 'update'])->name('user.update');
-    Route::post('/settings/profile-update', [User\ProfileController::class, 'update'])->name('profile.update');
-    Route::post('/add-to-watched', [API\MovieController::class, 'save'])->name('movie.watched');
+    Route::get('/profile', [Account\ProfileController::class, 'index'])->name('profile');
+    Route::get('/settings', [Account\UserController::class, 'index'])->name('settings');
+    Route::post('/settings/user-update', [Account\UserController::class, 'update'])->name('user.update');
+    Route::post('/settings/profile-update', [Account\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/add-to-watched', [App\MovieController::class, 'save'])->name('movie.watched');
 });
