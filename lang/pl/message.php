@@ -94,8 +94,7 @@ return [
     'enter_current_password' => 'Aby wprowadzić zmiany wprowadź obecne hasło',
 
     // Navbar 
-    'navbar_language_en' => 'English',
-    'navbar_language_pl' => 'Polski',
+    'navbar_search' => 'Wyszukaj',
 
     // Homepage
     'homepage_popular_movies' => 'Popularne filmy w ostatnim tygodniu',

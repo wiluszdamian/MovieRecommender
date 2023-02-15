@@ -36,5 +36,6 @@ class IndexController extends Controller
             'popularTvSeries' => $trendingTvs,
             'trendingPersons' => $trendingPerson
         ]);
+        dd($trendingPerson);
     }
 }

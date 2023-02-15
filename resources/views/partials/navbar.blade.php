@@ -29,33 +29,14 @@
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                            aria-current="page">{{ __('message.home') }}</a>
+                            aria-current="page">{{ __('message.home') }}
+                        </a>
 
                         <a href="{{ route('movies') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md ">{{ __('message.movies') }}</a>
-
-                        <a href="{{ route('tv') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.tv_series') }}</a>
-
-                        <a href="{{ route('actors') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">{{ __('message.actres') }}</a>
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md ">{{ __('message.navbar_search') }}
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div id="dropdownDotsHorizontal"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownMenuIconHorizontalButton">
-                    <li>
-                        <a href="{{ route('language', ['locale' => 'en']) }}"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('message.navbar_language_en') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('language', ['locale' => 'pl']) }}"
-                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ __('message.navbar_language_pl') }}</a>
-                    </li>
-                    <li>
-                </ul>
             </div>
             @guest
                 <div>
