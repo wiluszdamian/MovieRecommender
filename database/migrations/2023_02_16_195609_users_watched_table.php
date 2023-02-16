@@ -13,10 +13,14 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('users_watched', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('movie_id');
-            $table->string('movie_genres');
-            $table->boolean('viewed');
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references(('id'))
+                ->on('users')
+                ->onDelete('cascade');
+            $table->unsignedBigInteger('movie_id')->nullable();
+            $table->unsignedBigInteger('tv_id')->nullable();
             $table->timestamps();
         });
     }

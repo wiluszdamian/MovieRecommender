@@ -18,9 +18,8 @@ class ProfileController extends Controller
     public function index()
     {
         $userId = \Auth::id();
-        $userProfile = UsersProfile::where('id', $userId)->first();
         $user = User::where('id', $userId)->first();
-        return view('users.profile', compact('userProfile', 'user'));
+        return view('users.profile', compact('user'));
     }
 
     /**
