@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\App;
-;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -35,7 +34,7 @@ class MovieController extends Controller
         $actorDetails = getDataFromApi("movie/" . $id . "/credits")['cast'];
         $actorDetails = array_slice($actorDetails, 0, 8);
 
-        // Fetch recommendations from /movie/{id}/recommendations and exctracts 'results' field
+        // Fetch recommendations from /movie/{id}/recommendations and extracts 'results' field
         $recommendationDetails = getDataFromApi("movie/" . $id . "/recommendations")['results'];
         $recommendationDetails = array_slice($recommendationDetails, 0, 8);
 

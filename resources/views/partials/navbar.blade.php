@@ -32,7 +32,7 @@
                             aria-current="page">{{ __('message.home') }}
                         </a>
 
-                        <a href="{{ route('movies') }}"
+                        <a href="{{ route("index") }}"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md ">{{ __('message.navbar_search') }}
                         </a>
                     </div>

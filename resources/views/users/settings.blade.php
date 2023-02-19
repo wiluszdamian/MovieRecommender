@@ -42,18 +42,18 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="now_password"
+                                    <label for="new_password"
                                         class="block text-sm font-medium text-gray-700">{{ __('message.settings_now_password') }}</label>
-                                    <input type="password" name="now_password" id="now_password" autocomplete="email"
+                                    <input type="password" name="new_password" id="new_password" autocomplete="email"
                                         minlength="6"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                         placeholder="********">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
-                                    <label for="currently_password"
+                                    <label for="current_password"
                                         class="block text-sm font-medium text-gray-700"><b>{{ __('message.settings_current_password') }}</b></label>
-                                    <input type="password" name="currently_password" id="currently_password" minlength="6"
+                                    <input type="password" name="current_password" id="current_password" minlength="6"
                                         autocomplete="email"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                         placeholder="********">

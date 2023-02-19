@@ -15,12 +15,12 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
-    {
-        $userId = \Auth::id();
-        $user = User::where('id', $userId)->first();
-        return view('users.profile', compact('user'));
-    }
+//    public function index()
+//    {
+//        $userId = \Auth::id();
+//        $user = User::where('id', $userId)->first();
+//        return view('users.profile', compact('user'));
+//    }
 
     /**
      * Update the user profile information.
