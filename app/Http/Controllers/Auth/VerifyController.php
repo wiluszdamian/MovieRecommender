@@ -2,25 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Models\User;
 use App\Models\UserVerify;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-use App\Mail\VerifyEmail;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 
 class VerifyController extends Controller
 {
-    /**
-     * Summary of verifyUser
-     * @param Request $request
-     * @param mixed $token
-     * @return \Illuminate\Http\RedirectResponse|mixed
-     */
     public function verifyUser(Request $request, $token)
     {
         $verifyUser = User::where('token', $token)->first();

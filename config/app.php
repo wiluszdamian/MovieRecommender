@@ -29,6 +29,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'tmdb_api_key' => env('TMDB_API_KEY'),
 
     /*
     |--------------------------------------------------------------------------
@@ -196,7 +197,6 @@ return [
             // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -214,5 +214,4 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Gravatar' => forxer\LaravelGravatar\Facade::class,
     ])->toArray(),
-
 ];

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "dariusiii/tmdb-laravel": "^6.0",
         "forxer/laravel-gravatar": "^1.8",
         "guzzlehttp/guzzle": "^7.5",
         "jenssegers/agent": "^2.6",
@@ -33,7 +34,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/ApiHelper.php"
+
         ]
     },
     "autoload-dev": {
@@ -66,7 +67,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",

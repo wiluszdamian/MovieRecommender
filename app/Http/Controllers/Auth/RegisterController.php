@@ -18,6 +18,7 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
+        // TODO: Improve data validation and error message display.
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

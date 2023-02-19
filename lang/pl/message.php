@@ -13,7 +13,7 @@ return [
     |
     */
 
-    //TODO: Rewriting langs, knocking out directories and files in favor of one main file with lang, example: polish.php or english.php
+    //TODO: Rewriting langs
 
     'most_popular_movies' => 'Popularne filmy w ostatnim tygodniu',
     'most_popular_tvseries' => 'Popularne seriale w ostatnim tygodniu',
@@ -93,7 +93,7 @@ return [
     'currently_password' => 'Obecne hasło',
     'enter_current_password' => 'Aby wprowadzić zmiany wprowadź obecne hasło',
 
-    // Navbar 
+    // Navbar
     'navbar_search' => 'Wyszukaj',
 
     // Homepage
@@ -137,16 +137,7 @@ return [
     'profile_recomendations_movies' => 'Polecane filmy',
     'profile_recommendations_tv' => 'Polecane seriale',
 
-    // Settings 
-    // 'settings_profile' => 'Profil',
-    // 'settings_profile_description' => 'Te informacje będą wyświetlane publicznie',
-    // 'settings_socials' => 'Społeczności',
-    // 'settings_about_me' => 'O mnie',
-    // 'settings_about_me_description' => 'Krótki opis o sobie',
-    // 'settings_country' => "Kraj: ",
-    // 'settings_city' => "Miasto: ",
-    // 'settings_avatar_url' => 'Link do Avatara',
-    // 'settings_avatar_url_placeholder' => 'https://linkdoavatara.pl/przyklad.png',
+    // Settings
     'settings_user' => 'Ustawienia użytkownika',
     'settings_user_description' => 'Skonfiguruj ustawienia użytkownika, aby zapisać wprowadzć aktualne hasło.',
     'settings_username' => 'Nazwa użytkownika',
