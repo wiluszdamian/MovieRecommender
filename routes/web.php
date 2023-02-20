@@ -24,6 +24,7 @@ Route::get('/actors/{id}', [App\PersonController::class, 'show'])->name('person.
 
 
 Route::middleware(['guest'])->group(function () {
+    // Account
     Route::get('/login', [Auth\LoginController::class, 'index'])->name('login');
     Route::post('/login', [Auth\LoginController::class, 'store'])->name('login');
     Route::get('/register', [Auth\RegisterController::class, 'index'])->name('register');
@@ -34,7 +35,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-
     // Account
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
     Route::get('/account', [Account\UserController::class, 'store'])->name('profile');
