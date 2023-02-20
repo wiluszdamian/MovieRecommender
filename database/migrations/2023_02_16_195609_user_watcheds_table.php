@@ -12,7 +12,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users_watchlists', function (Blueprint $table) {
+        Schema::create('users_watcheds', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users_watchlists');
+        Schema::dropIfExists('users_watcheds');
     }
 };

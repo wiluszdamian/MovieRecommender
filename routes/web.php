@@ -38,5 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account', [Account\UserController::class, 'store'])->name('profile');
     Route::get('/settings', [Account\UserController::class, 'index'])->name('settings');
     Route::post('/settings/update', [Account\UserController::class, 'update'])->name('user.update');
-    Route::post('/add-to-watched', [App\MovieController::class, 'save'])->name('movie.watched');
+    Route::post('/movies/{id}/watchlist', [Account\WatchlistController::class, 'addMovieToWatchlist'])->name('movie.add.watchlist');
+    Route::post('/tv/{id}/watchlist', [Account\WatchlistController::class, 'addTvToWatchlist'])->name('tv.add.watchlist');
+    Route::post('/movies/{id}/watched', [Account\WatchedController::class, 'addMovieToWatched'])->name('movie.add.watched');
+    Route::post('/tv/{id}/watched', [Account\WatchedController::class, 'addTvToWatched'])->name('tv.add.watched');
 });

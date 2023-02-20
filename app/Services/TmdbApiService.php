@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class TmdbApiService
 {
-    // TODO: Divide into smaller classes
     protected $apiKey;
     protected $client;
     protected $baseUrl;
@@ -61,6 +60,22 @@ class TmdbApiService
     {
         $endpoint = "tv/" . $id . "/credits";
         $data = $this->getDataFromApi($endpoint);
+        return array_slice($data['cast'], 0, $count);
+    }
+
+    public function getActorMovieCredits($id, $language = "pl", $count = 5)
+    {
+        $endpoint = "person/" . $id . "/movie_credits";
+        $data = $this->getDataFromApi($endpoint);
+
+        return array_slice($data['cast'], 0, $count);
+    }
+
+    public function getActorTvCredits($id, $language = "pl", $count = 5)
+    {
+        $endpoint = "person/" . $id . "/tv_credits";
+        $data = $this->getDataFromApi($endpoint);
+
         return array_slice($data['cast'], 0, $count);
     }
 
