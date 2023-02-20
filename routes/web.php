@@ -34,12 +34,22 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    // Account
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
     Route::get('/account', [Account\UserController::class, 'store'])->name('profile');
     Route::get('/settings', [Account\UserController::class, 'index'])->name('settings');
     Route::post('/settings/update', [Account\UserController::class, 'update'])->name('user.update');
-    Route::post('/movies/{id}/watchlist', [Account\WatchlistController::class, 'addMovieToWatchlist'])->name('movie.add.watchlist');
-    Route::post('/tv/{id}/watchlist', [Account\WatchlistController::class, 'addTvToWatchlist'])->name('tv.add.watchlist');
-    Route::post('/movies/{id}/watched', [Account\WatchedController::class, 'addMovieToWatched'])->name('movie.add.watched');
-    Route::post('/tv/{id}/watched', [Account\WatchedController::class, 'addTvToWatched'])->name('tv.add.watched');
+
+    // Watchlist
+    Route::post('/movies/{id}/watchlist-add', [Account\WatchlistController::class, 'addMovieToWatchlist'])->name('movie.add.watchlist');
+    Route::post('/tv/{id}/watchlist-add', [Account\WatchlistController::class, 'addTvToWatchlist'])->name('tv.add.watchlist');
+    Route::delete('/movies/{id}/watchlist-remove', [Account\WatchlistController::class, 'removeMovieFromWatchlist'])->name('movie.remove.watchlist');
+    Route::delete('/tv/{id}/watchlist-remove', [Account\WatchlistController::class, 'removeTvFromWatchlist'])->name('tv.remove.watchlist');
+
+    // Watched
+    Route::post('/movies/{id}/watched-add', [Account\WatchedController::class, 'addMovieToWatched'])->name('movie.add.watched');
+    Route::post('/tv/{id}/watched-add', [Account\WatchedController::class, 'addTvToWatched'])->name('tv.add.watched');
+    Route::delete('/movies/{id}/watched-remove', [Account\WatchedController::class, 'removeMovieFromWatched'])->name('movie.remove.watched');
+    Route::delete('/tv/{id}/watched-remove', [Account\WatchedController::class, 'removeTvFromWatched'])->name('tv.remove.watched');
 });

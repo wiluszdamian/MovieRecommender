@@ -10,30 +10,51 @@ class WatchlistController extends Controller
 {
     public function addMovieToWatchlist($id)
     {
-        return $this->addMediaToWatchlist($id, 'movie_id');
+        return $this->addMediaToWatchlist($id, 'movie_id', 'add');
     }
 
     public function addTvToWatchlist($id)
     {
-        return $this->addMediaToWatchlist($id, 'tv_id');
+        return $this->addMediaToWatchlist($id, 'tv_id', 'add');
     }
 
-    private function addMediaToWatchlist($id, $mediaType)
+    public function removeMovieFromWatchlist($id)
+    {
+        return $this->addMediaToWatchlist($id, 'movie_id', 'remove');
+    }
+
+    public function removeTvFromWatchlist($id)
+    {
+        return $this->addMediaToWatchlist($id, 'tv_id', 'remove');
+    }
+
+    private function addMediaToWatchlist($id, $mediaType, $action)
     {
         $user = Auth::user();
-        $existingWatchlist = UserWatchlist::where('user_id', $user->id)
+        $existingWatched = UserWatchlist::where('user_id', $user->id)
             ->where($mediaType, $id)
-            ->exists();
+            ->first();
 
-        if ($existingWatchlist) {
-            $message = session()->flash('message', __('message.password_update_error'));
+        if ($action === 'add') {
+            if ($existingWatched) {
+                $message = session()->flash('message', __('message.password_update_error'));
+            } else {
+                $watched = new UserWatchlist([
+                    'user_id' => $user->id,
+                    $mediaType => $id
+                ]);
+                $watched->save();
+                $message = session()->flash('message', __('message.password_update_success'));
+            }
+        } elseif ($action === 'remove') {
+            if ($existingWatched) {
+                $existingWatched->delete();
+                $message = session()->flash('message', __('message.password_delete_success'));
+            } else {
+                $message = session()->flash('message', __('message.password_delete_error'));
+            }
         } else {
-            $watchlist = new UserWatchlist([
-                'user_id' => $user->id,
-                $mediaType => $id
-            ]);
-            $watchlist->save();
-            $message = session()->flash('message', __('message.password_update_success'));
+            $message = session()->flash('message', __('message.unknown_action'));
         }
 
         return redirect()->back()->with($message);
