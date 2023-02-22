@@ -52,4 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tv/{id}/watched-add', [Account\WatchedController::class, 'addTvToWatched'])->name('tv.add.watched');
     Route::delete('/movies/{id}/watched-remove', [Account\WatchedController::class, 'removeMovieFromWatched'])->name('movie.remove.watched');
     Route::delete('/tv/{id}/watched-remove', [Account\WatchedController::class, 'removeTvFromWatched'])->name('tv.remove.watched');
+
+    // Actors
+    Route::post('/actors/{id}/follow', [Account\FollowController::class, 'followActor'])->name('actor.follow');
+    Route::post('/actors/{id}/unfollow', [Account\FollowController::class, 'unfollowActor'])->name('actor.unfollow');
 });
