@@ -38,7 +38,7 @@ npm install
 composer install
 ```
 
-3. Launch the projekt
+3. Launch the project
 
 ```
 vendor/bin/sail up -d
