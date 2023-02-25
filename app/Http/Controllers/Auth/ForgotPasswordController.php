@@ -8,11 +8,20 @@ use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
 {
+    /**
+     * Display the forgot password form.
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         return view('auth.forgot');
     }
 
+    /**
+     * Send a password reset link to the user's email address.
+     * @param \Illuminate\Http\Request $request The HTTP request object.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendResetLinkEmail(Request $request)
     {
         try {
@@ -31,6 +40,10 @@ class ForgotPasswordController extends Controller
         return redirect()->route('password');
     }
 
+    /**
+     * Get the password broker for the controller.
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
+     */
     public function broker()
     {
         return Password::broker();

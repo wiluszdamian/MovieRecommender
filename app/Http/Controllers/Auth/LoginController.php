@@ -9,11 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Display the login form.
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         return view('auth.login');
     }
 
+    /**
+     * Authenticate the user using the given credentials and log them in.
+     * @param \App\Http\Requests\LoginRequest $request The HTTP request object containing the email and password.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(LoginRequest $request)
     {
         $credentials = [
@@ -21,7 +30,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             session()->flash('message', __('message.successfully_login'));
             return redirect()->route('index');
         }

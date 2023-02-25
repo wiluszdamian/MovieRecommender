@@ -11,6 +11,11 @@ class RecommendationController extends Controller
 {
     protected $tmdbApiService;
 
+    /**
+     * Create a new instance of the controller.
+     * @param \App\Services\TmdbApiService $tmdbApiService The TMDb API service to use.
+     * @return void
+     */
     public function __construct(TmdbApiService $tmdbApiService)
     {
         $this->tmdbApiService = $tmdbApiService;

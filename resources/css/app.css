@@ -276,6 +276,34 @@
             display: none;
         }
 
+        .popularMovies {
+            display: flex;
+            overflow-x: auto;
+            margin: 0 -0.5%;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+    
+        .popularMovies > * {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            margin: 0 0.5%;
+        }
+
+        .carousell {
+            display: flex;
+            overflow-x: auto;
+            margin: 0 -0.5%;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .carousell > * {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            margin: 0 0.5%;
+        }
+
         @media (min-width:640px) {
             .sm\:rounded-lg {
                 border-radius: .5rem
@@ -374,4 +402,10 @@
                 --tw-text-opacity: 1;
                 color: rgb(107 114 128 / var(--tw-text-opacity))
             }
+
+        @media screen and (max-width: 768px) {
+        .popularMovies {
+            overflow-x: scroll;
+        }
+    }
         }

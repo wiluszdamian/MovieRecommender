@@ -16,9 +16,9 @@ class IndexController extends Controller
 
     public function index()
     {
-        $popularMovies = $this->tmdb->getTrendingMovies(count: 5);
-        $popularTvSeries = $this->tmdb->getTrendingTvSeries(count: 5);
-        $trendingPersons = $this->tmdb->getTrendingPersons(count: 5);
+        $popularMovies = $this->tmdb->getTrendingMovies(count: 15);
+        $popularTvSeries = $this->tmdb->getTrendingTvSeries(count: 15);
+        $trendingPersons = $this->tmdb->getTrendingPersons(count: 15);
 
         return view('home.index', [
             'popularMovies' => $popularMovies,

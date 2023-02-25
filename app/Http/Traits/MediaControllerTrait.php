@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Auth;
 trait MediaControllerTrait
 {
     // TODO: Add langs
+
+    /**
+     * Add media to a given model and redirect back with a message.
+     * @param string $model The name of the model to add media to.
+     * @param int $id The ID of the media to add.
+     * @param string $mediaType The type of media to add.
+     * @param string $action The action to perform ('add' or 'remove').
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function addMediaTo($model, $id, $mediaType, $action)
     {
         $user = Auth::user();
@@ -39,6 +48,12 @@ trait MediaControllerTrait
         return redirect()->back()->with($message);
     }
 
+    /**
+     * Add or remove a user follow and redirect back with a message.
+     * @param int $id The ID of the user to follow/unfollow.
+     * @param string $action The action to perform ('add' or 'remove').
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function addUserFollows($id, $action)
     {
         $user = Auth::user();

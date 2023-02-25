@@ -61,7 +61,8 @@
                     </svg>
                 </div>
                 @auth
-                    <form class="mt-3" style="float: left;" action="{{ route('movie.add.watchlist', ['id' => $movie['id']]) }}" method="POST">
+                    <form class="mt-3" style="float: left;"
+                        action="{{ route('movie.add.watchlist', ['id' => $movie['id']]) }}" method="POST">
                         @csrf
                         <button type="submit" id="to_watched"
                             class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
@@ -70,7 +71,7 @@
                     <form class="mt-3" action="{{ route('movie.add.watched', ['id' => $movie['id']]) }}" method="POST">
                         @csrf
                         <button type="submit" id="to_watched"
-                                class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
+                            class="inline-block px-6 py-2 border-2 border-blue-600 text-gray-200 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">
                             {{ __('message.watched') }}</button>
                     </form><br />
                 @endauth
@@ -115,7 +116,7 @@
             <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-9">
                 <div>
                     <h3 class="text-sm text-gray-300">
-                        <div style="display: flex;">
+                        <div style="display: flex;" class="carousell">
                             @foreach ($actors as $actor)
                                 <a href="/actors/{{ $actor['id'] }}">
                                     <div style="text-align: center; margin: 5px;">
@@ -137,7 +138,7 @@
             <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-9">
                 <div>
                     <h3 class="text-sm text-gray-300">
-                        <div style="display: flex;">
+                        <div style="display: flex;" class="carousell">
                             @foreach ($recommendations as $recommendation)
                                 <a href="/movies/{{ $recommendation['id'] }}">
                                     <div style="text-align: center; margin: 5px;">
