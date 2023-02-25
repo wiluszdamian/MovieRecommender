@@ -64,11 +64,11 @@ http://localhost
 
 ## Suggestions
 
-If you want to propose new features, submit it in the section [Issues](https://github.com/wiluszdamian/MovieRecommender/actions), using the appropriate label.
+If you want to propose new features, submit it in the section [Issues](https://github.com/wiluszdamian/MovieRecommender/issues), using the appropriate label.
 
 ## Bugs
 
-If you discover a bug in this application, add a thread on the repository under the section [Issues](https://github.com/wiluszdamian/MovieRecommender/actions). Describe your bug report in detail, include all the data needed for reproduction.
+If you discover a bug in this application, add a thread on the repository under the section [Issues](https://github.com/wiluszdamian/MovieRecommender/issues). Describe your bug report in detail, include all the data needed for reproduction.
 
 ## License
 
