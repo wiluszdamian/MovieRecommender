@@ -31,11 +31,11 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            session()->flash('message', __('message.successfully_login'));
+            session()->flash('success', __('message.successfully_login'));
             return redirect()->route('index');
         }
 
-        session()->flash('message', __('message.invalid_data'));
+        session()->flash('error', __('message.invalid_data'));
         return redirect()->route('login');
     }
 }

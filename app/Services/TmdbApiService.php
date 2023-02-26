@@ -131,4 +131,72 @@ class TmdbApiService
 
         return $data;
     }
+
+    public function searchMovies($query, $year, $genre, $language)
+    {
+        $endpoint = "search/movie";
+        $params = [
+            "query" => $query,
+            "year" => $year,
+            "with_genres" => $genre,
+            "language" => $language,
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+
+        return $data['results'];
+    }
+
+    public function searchTVSeries($query, $year, $genre, $language)
+    {
+        $endpoint = "search/tv";
+        $params = [
+            "query" => $query,
+            "first_air_date_year" => $year,
+            "with_genres" => $genre,
+            "language" => $language,
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+
+        return $data['results'];
+    }
+
+    public function searchActors($query, $country, $language)
+    {
+        $endpoint = "search/person";
+        $params = [
+            "query" => $query,
+            "region" => $country,
+            "language" => $language,
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+
+        return $data['results'];
+    }
+
+    public function getMovieGenres($language = "pl")
+    {
+        $endpoint = "genre/movie/list";
+        $params = [
+            "language" => $language
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+        return $data['genres'];
+    }
+
+    public function getCountries($language = "pl", $query = null)
+    {
+        $endpoint = "configuration/countries";
+        $params = [
+            "language" => $language
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+
+        if ($query) {
+            $data = array_filter($data, function ($item) use ($query) {
+                return stripos($item['english_name'], $query) !== false;
+            });
+        }
+
+        return $data;
+    }
 }

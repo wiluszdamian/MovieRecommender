@@ -40,10 +40,10 @@ class RegisterController extends Controller
             $token = $user->createToken("Token User: " . $user->name)->accessToken;
             $response = ['token' => $token];
 
-            session()->flash('message', __('message.successfully_registration'));
+            session()->flash('success', __('message.successfully_registration'));
             return redirect()->route('index');
         } catch (\Exception $e) {
-            session()->flash('message', __('message.registration_error') . $e->getMessage());
+            session()->flash('error', __('message.registration_error') . $e->getMessage());
             return redirect()->back();
         }
     }

@@ -17,12 +17,12 @@ class VerifyController extends Controller
             if (!$verifyUser->email_verified_at) {
                 $verifyUser->email_verified_at = 1;
                 $verifyUser->save();
-                session()->flash('message', __('message.email_successfully_verified_email'));
+                session()->flash('success', __('message.email_successfully_verified_email'));
             } else {
-                session()->flash('message', __('message.email_verified_email'));
+                session()->flash('success', __('message.email_verified_email'));
             }
         } else {
-            session()->flash('message', __('message.email_error_verified'));
+            session()->flash('error', __('message.email_error_verified'));
         }
 
         return redirect()->route('index');

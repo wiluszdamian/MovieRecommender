@@ -18,10 +18,10 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/movies/{id}', [App\MovieController::class, 'show'])->name('movies.details');
-Route::get('/tv-series/{id}', [App\TvController::class, 'show'])->name('tv.details');
+Route::get('/movies/{id}', [App\MovieController::class, 'show'])->name('movie');
+Route::get('/tv-series/{id}', [App\TvController::class, 'show'])->name('tvSerie');
 Route::get('/actors/{id}', [App\PersonController::class, 'show'])->name('person.details');
-
+Route::get('/search', [App\SearchController::class, 'search'])->name('search');
 
 Route::middleware(['guest'])->group(function () {
     // Account

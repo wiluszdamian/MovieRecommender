@@ -17,7 +17,7 @@ class LogoutController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        session()->flash('message', __('message.logout'));
+        session()->flash('success', __('message.logout'));
         return redirect()->route('index');
     }
 }

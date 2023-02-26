@@ -25,24 +25,24 @@ trait MediaControllerTrait
 
         if ($action === 'add') {
             if ($existingMedia) {
-                $message = session()->flash('message', __('message.password_update_error'));
+                $message = session()->flash('error', __('message.add_error'));
             } else {
                 $media = new $model([
                     'user_id' => $user->id,
                     $mediaType => $id
                 ]);
                 $media->save();
-                $message = session()->flash('message', __('message.password_update_success'));
+                $message = session()->flash('success', __('message.add_success'));
             }
         } elseif ($action === 'remove') {
             if ($existingMedia) {
                 $existingMedia->delete();
-                $message = session()->flash('message', __('message.password_delete_success'));
+                $message = session()->flash('success', __('message.remove_success'));
             } else {
-                $message = session()->flash('message', __('message.password_delete_error'));
+                $message = session()->flash('error', __('message.remove_error'));
             }
         } else {
-            $message = session()->flash('message', __('message.unknown_action'));
+            $message = session()->flash('error', __('message.unknow_error'));
         }
 
         return redirect()->back()->with($message);
@@ -63,24 +63,24 @@ trait MediaControllerTrait
 
         if ($action === 'add') {
             if ($existingFollow) {
-                $message = session()->flash('message', __('message.password_update_error'));
+                $message = session()->flash('error', __('message.add_error'));
             } else {
                 $follow = new UserFollow([
                     'user_id' => $user->id,
                     'person_id' => $id
                 ]);
                 $follow->save();
-                $message = session()->flash('message', __('message.password_update_success'));
+                $message = session()->flash('success', __('message.add_success'));
             }
         } elseif ($action === 'remove') {
             if ($existingFollow) {
                 $existingFollow->delete();
-                $message = session()->flash('message', __('message.password_delete_success'));
+                $message = session()->flash('success', __('message.remove_success'));
             } else {
-                $message = session()->flash('message', __('message.password_delete_error'));
+                $message = session()->flash('error', __('message.remove_error'));
             }
         } else {
-            $message = session()->flash('message', __('message.unknown_action'));
+            $message = session()->flash('error', __('message.unknow_error'));
         }
 
         return redirect()->back()->with($message);

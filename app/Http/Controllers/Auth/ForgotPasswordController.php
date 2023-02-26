@@ -32,10 +32,10 @@ class ForgotPasswordController extends Controller
             );
 
             if ($response === Password::RESET_LINK_SENT) {
-                session()->flash('message', __('message.reset_link_sent'));
+                session()->flash('success', __('message.reset_link_sent'));
             }
         } catch (\Exception $e) {
-            session()->flash('message', __('message.error') . $e->getMessage());
+            session()->flash('error', __('message.error') . $e->getMessage());
         }
         return redirect()->route('password');
     }

@@ -39,9 +39,9 @@ class UserController extends Controller
         $user = auth()->user();
         $result = $userService->updateUser($user, $request->all());
         if ($result) {
-            session()->flash('message', __('message.update_success'));
+            session()->flash('success', __('message.update_success'));
         } else {
-            session()->flash('message', __('message.password_update_error'));
+            session()->flash('error', __('message.password_update_error'));
         }
         return redirect()->route('settings');
     }

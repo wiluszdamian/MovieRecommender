@@ -27,10 +27,15 @@
         @include('partials.navbar');
     </div>
     <div class="content" style="margin-left: 20%; margin-right: 20%;">
-        @if (Session::has('message'))
-            <div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative {{ Session::get('alert-class', 'bg-green-100') }}"
+        @if (Session::has('success'))
+            <div class="alert border border-green-400 text-gray-900 px-4 py-3 rounded relative bg-green-100"
                 role="alert">
-                <span class="block sm:inline">{{ Session::get('message') }}</span>
+                <span class="block sm:inline">{{ Session::get('success') }}</span>
+            </div><br />
+        @endif
+        @if (Session::has('error'))
+            <div class="alert border border-red-400 text-gray-900 px-4 py-3 rounded relative bg-red-100" role="alert">
+                <span class="block sm:inline">{{ Session::get('error') }}</span>
             </div><br />
         @endif
         @yield('content')
