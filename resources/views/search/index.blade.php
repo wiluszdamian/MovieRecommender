@@ -16,15 +16,15 @@
                             {{ __('message.search_type') }}
                         </label>
                         <label class="block text-gray-200 font-bold mb-2">
-                            <input type="radio" name="category" value="movie" checked>
+                            <input type="checkbox" name="category[]" value="movie" checked>
                             {{ __('message.search_movies') }}
                         </label>
                         <label class="block text-gray-200 font-bold mb-2">
-                            <input type="radio" name="category" value="tv">
+                            <input type="checkbox" name="category[]" value="tv">
                             {{ __('message.search_tvs') }}
                         </label>
                         <label class="block text-gray-200 font-bold mb-2">
-                            <input type="radio" name="category" value="person">
+                            <input type="checkbox" name="category[]" value="person">
                             {{ __('message.search_actors') }}
                         </label>
                     </div>
