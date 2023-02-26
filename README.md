@@ -38,7 +38,7 @@ npm install
 composer install
 ```
 
-3. Launch the project
+3. Launch the project with Laravel Sail (require Docker)
 
 ```
 vendor/bin/sail up -d
@@ -48,11 +48,18 @@ npm run dev
 4. Run the required commands
 
 ```
+cp .env.example .env
 vendor/bin/sail artisan key:generator
 vendor/bin/sail artisan migrate
 ```
 
-5. The application was launched
+5. Set up TMDB API Key in .env
+
+```
+Line 60: TMDB_API_KEY=
+```
+
+6. The application was launched
 
 ```
 http://localhost
