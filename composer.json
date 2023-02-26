@@ -5,7 +5,7 @@
     "keywords": ["movie", "recommender", "laravel", "laravel-project", "recommendation", "tvseries", "blade"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1.2",
         "dariusiii/tmdb-laravel": "^6.0",
         "forxer/laravel-gravatar": "^1.8",
         "guzzlehttp/guzzle": "^7.5",
