@@ -89,6 +89,28 @@ class TmdbApiService
         return array_slice($data['results'], 0, $count);
     }
 
+    public function getMovies($page = 1, $language = "pl")
+    {
+        $endpoint = "movie/popular";
+        $params = [
+            "page" => $page,
+            "language" => $language
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+        return $data;
+    }
+
+    public function getTVSeries($page = 1, $language = "pl")
+    {
+        $endpoint = "tv/popular";
+        $params = [
+            "page" => $page,
+            "language" => $language
+        ];
+        $data = $this->getDataFromApi($endpoint, $params);
+        return $data;
+    }
+
     public function getTrendingMovies($language = "pl", $count = 5)
     {
         $endpoint = "trending/movie/week";
