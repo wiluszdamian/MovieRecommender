@@ -10,10 +10,10 @@ Web application in Laravel to manage a library of watched films, search for film
 -   [x] User data editing system (username, email, password)
 -   [x] Trending movies, series and actors from the past week
 -   [x] Ability to display additional information about films, series and actors
--   [ ] Display user profile with Gravatar and "To View" and "Viewed" lists (under development)
+-   [x] Display user profile with "Watchlist" and "Watched"
+-   [x] Adding to the "Watched" and "To Watch" lists and the ability to "Watch" actors
 -   [ ] Content-based recommendation system for series and movies (under development)
--   [ ] Search engine for movies, TV series and actors (under development)
--   [ ] Adding to the "Watched" and "To Watch" lists and the ability to "Watch" actors (under development)
+-   [x] Search engine for movies, TV series and actors (under development)
 -   [ ] Added langs to the application which makes translation easier (under development)
 
 ## Requirements
