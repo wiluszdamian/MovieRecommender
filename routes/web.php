@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [Auth\LogoutController::class, 'logout'])->name('logout');
     Route::get('/account', [Account\UserController::class, 'store'])->name('profile');
     Route::get('/settings', [Account\UserController::class, 'index'])->name('settings');
-    Route::get('/recommendations', [Account\RecommendationController::class, 'recommendations'])->name('recommendation');
+    Route::get('/recommendations', [Account\RecommendationController::class, 'index'])->name('recommendation');
     Route::post('/settings/update', [Account\UserController::class, 'update'])->name('user.update');
 
     // Watchlist
