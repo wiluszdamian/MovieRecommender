@@ -19,205 +19,161 @@ class TmdbApiService
         $this->language = "pl";
     }
 
-    public function getMovieDetails($movieId, $language = "pl")
+    public function getMovieDetails(int $movieId, string $language = "pl"): array
     {
-        $endpoint = "movie/" . $movieId;
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data;
+        return $this->getDataFromApi("movie/{$movieId}", ['language' => $language]);
     }
 
-    public function getTVSeriesDetails($tvSeriesId, $language = "pl")
+    public function getTVSeriesDetails(int $tvSeriesId, string $language = "pl"): array
     {
-        $endpoint = "tv/" . $tvSeriesId;
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data;
+        return $this->getDataFromApi("tv/{$tvSeriesId}", ['language' => $language]);
     }
 
-    public function getPersonDetails($personId, $language = "pl")
+    public function getPersonDetails(int $personId, string $language = "pl"): array
     {
-        $endpoint = "person/" . $personId;
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data;
+        return $this->getDataFromApi("person/{$personId}", ['language' => $language]);
     }
 
-    public function getMovieCredits($id, $language = "pl", $count = 5)
+    public function getMovieCredits(int $id, int $count = 5): array
     {
-        $endpoint = "movie/" . $id . "/credits";
-        $data = $this->getDataFromApi($endpoint);
+        $data = $this->getDataFromApi("movie/{$id}/credits");
         return array_slice($data['cast'], 0, $count);
     }
 
-    public function getTvCredits($id, $language = "pl", $count = 5)
+    public function getTvCredits(int $id, int $count = 5): array
     {
-        $endpoint = "tv/" . $id . "/credits";
-        $data = $this->getDataFromApi($endpoint);
+        $data = $this->getDataFromApi("tv/{$id}/credits");
         return array_slice($data['cast'], 0, $count);
     }
 
-    public function getActorMovieCredits($id, $language = "pl", $count = 5)
+    public function getActorMovieCredits(int $id, int $count = 5): array
     {
-        $endpoint = "person/" . $id . "/movie_credits";
-        $data = $this->getDataFromApi($endpoint);
-
+        $data = $this->getDataFromApi("person/{$id}/movie_credits");
         return array_slice($data['cast'], 0, $count);
     }
 
-    public function getActorTvCredits($id, $language = "pl", $count = 5)
+    public function getActorTvCredits(int $id, int $count = 5): array
     {
-        $endpoint = "person/" . $id . "/tv_credits";
-        $data = $this->getDataFromApi($endpoint);
-
+        $data = $this->getDataFromApi("person/{$id}/tv_credits");
         return array_slice($data['cast'], 0, $count);
     }
 
-    public function getRecommendations($type, $id, $language = "pl", $count = 5)
+    public function getRecommendations(string $type, int $id, string $language = "pl", int $count = 5): array
     {
-        $endpoint = "$type/$id/recommendations";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return array_slice($data['results'], 0, $count);
+        return $this->getDataFromApi("{$type}/{$id}/recommendations", ['language' => $language])['results'];
     }
 
-    public function getMovies($page = 1, $language = "pl")
+    public function getMovies(int $page = 1, array $userPreferencesIds = [], string $language = "pl", array $followedActorsIds = []): array
     {
-        $endpoint = "movie/popular";
         $params = [
             "page" => $page,
-            "language" => $language
+            "language" => $language,
+            "with_cast" => $followedActorsIds,
+            "with_genres" => $userPreferencesIds,
         ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data;
+        return $this->getDataFromApi("discover/movie", $params);
     }
 
-    public function getTVSeries($page = 1, $language = "pl")
+    public function getTVSeries(int $page = 1, array $userPreferencesIds = [], string $language = "pl"): array
     {
-        $endpoint = "tv/popular";
         $params = [
             "page" => $page,
-            "language" => $language
+            "language" => $language,
+            "with_genres" => $userPreferencesIds,
         ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data;
+        return $this->getDataFromApi("discover/tv", $params);
     }
 
-    public function getTrendingMovies($language = "pl", $count = 5)
+    public function getTrendingMovies(string $language = "pl", int $count = 5): array
     {
-        $endpoint = "trending/movie/week";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return array_slice($data['results'], 0, $count);
+        return $this->getDataFromApi("trending/movie/week", ['language' => $language])['results'];
     }
 
-    public function getTrendingTvSeries($language = "pl", $count = 5)
+    public function getTrendingTvSeries(string $language = "pl", int $count = 5): array
     {
-        $endpoint = "trending/tv/week";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return array_slice($data['results'], 0, $count);
+        return $this->getDataFromApi("trending/tv/week", ['language' => $language])['results'];
     }
 
-    public function getTrendingPersons($language = "pl", $count = 5)
+    public function getTrendingPersons(string $language = "pl", int $count = 5): array
     {
-        $endpoint = "trending/person/week";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return array_slice($data['results'], 0, $count);
+        return $this->getDataFromApi("trending/person/week", ['language' => $language])['results'];
     }
 
-    private function getDataFromApi($endpoint, $params = [])
+    public function searchMovies(string $query, int $year, int $genre, string $language): array
     {
-        $params = array_merge($params, [
-            "api_key" => $this->apiKey
-        ]);
-
-        $client = new Client();
-        $response = $client->get($this->baseUrl . $endpoint . "?" . http_build_query($params));
-        $data = json_decode($response->getBody(), true);
-
-        return $data;
-    }
-
-    public function searchMovies($query, $year, $genre, $language)
-    {
-        $endpoint = "search/movie";
         $params = [
             "query" => $query,
             "year" => $year,
             "with_genres" => $genre,
             "language" => $language,
         ];
-        $data = $this->getDataFromApi($endpoint, $params);
-
-        return $data['results'];
+        return $this->getDataFromApi("search/movie", $params)['results'];
     }
 
-    public function searchTVSeries($query, $year, $genre, $language)
+    public function searchTVSeries(string $query, int $year, int $genre, string $language): array
     {
-        $endpoint = "search/tv";
         $params = [
             "query" => $query,
             "first_air_date_year" => $year,
             "with_genres" => $genre,
             "language" => $language,
         ];
-        $data = $this->getDataFromApi($endpoint, $params);
-
-        return $data['results'];
+        return $this->getDataFromApi("search/tv", $params)['results'];
     }
 
-    public function searchActors($query, $country, $language)
+    public function searchActors(string $query, string $country, string $language): array
     {
-        $endpoint = "search/person";
         $params = [
             "query" => $query,
             "region" => $country,
             "language" => $language,
         ];
-        $data = $this->getDataFromApi($endpoint, $params);
-
-        return $data['results'];
+        return $this->getDataFromApi("search/person", $params)['results'];
     }
 
-    public function getMovieGenres($language = "pl")
+    public function getMovieGenres(string $language = "pl"): array
     {
-        $endpoint = "genre/movie/list";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
-        return $data['genres'];
+        return $this->getDataFromApi("genre/movie/list", ['language' => $language])['genres'];
     }
 
-    public function getCountries($language = "pl", $query = null)
+    public function getTVGenres(string $language = "pl"): array
     {
-        $endpoint = "configuration/countries";
-        $params = [
-            "language" => $language
-        ];
-        $data = $this->getDataFromApi($endpoint, $params);
+        return $this->getDataFromApi("genre/tv/list", ['language' => $language])['genres'];
+    }
+
+    public function getCountries(string $language = "pl", string $query = null): array
+    {
+        $data = $this->getDataFromApi("configuration/countries", ['language' => $language]);
 
         if ($query) {
             $data = array_filter($data, function ($item) use ($query) {
                 return stripos($item['english_name'], $query) !== false;
             });
         }
+
+        return $data;
+    }
+
+    public function getMovieOrTVSeriesDetails(int $movieOrTVSeriesId): array
+    {
+        $params = [
+            'api_key' => $this->apiKey,
+            'language' => $this->language,
+            'append_to_response' => 'videos,images,credits,recommendations,similar',
+        ];
+
+        $response = $this->client->get($this->baseUrl . "movie/{$movieOrTVSeriesId}", ['query' => $params]);
+        return json_decode($response->getBody(), true);
+    }
+
+    private function getDataFromApi(string $endpoint, array $params = []): array
+    {
+        $params = array_merge($params, [
+            "api_key" => $this->apiKey
+        ]);
+
+        $response = $this->client->get($this->baseUrl . $endpoint . "?" . http_build_query($params));
+        $data = json_decode($response->getBody(), true);
 
         return $data;
     }

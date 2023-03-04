@@ -24,73 +24,114 @@ class RecommendationController extends Controller
         $this->tmdbApiService = $tmdbApiService;
     }
 
-    public function index($userId, $count = 5)
+    public function index()
     {
         $userId = Auth::id();
 
-        $watchedMoviesIds = DB::table('user_watcheds')->where('user_id', $userId)->pluck('movie_id')->toArray();
-        $watchedTVSeriesIds = DB::table('user_watcheds')->where('user_id', $userId)->pluck('tv_id')->toArray();
+        $watchedMoviesIds = $this->getWatchedMoviesIds($userId);
+        $watchedTVSeriesIds = $this->getWatchedTVSeriesIds($userId);
+        $watchlistMoviesIds = $this->getWatchlistMoviesIds($userId);
+        $watchlistTVSeriesIds = $this->getWatchlistTVSeriesIds($userId);
+        $followedActorsIds = $this->getFollowedActorsIds($userId);
 
-        $watchlistMoviesIds = DB::table('user_watchlists')->where('user_id', $userId)->pluck('movie_id')->toArray();
-        $watchlistTVSeriesIds = DB::table('user_watchlists')->where('user_id', $userId)->pluck('tv_id')->toArray();
-
-        $followedActorsIds = DB::table('user_follows')->where('user_id', $userId)->pluck('person_id')->toArray();
-
-        $watchedMovies = collect([]);
-        foreach ($watchedMoviesIds as $movieId) {
-            $movieDetails = $this->tmdbApiService->getMovieDetails($movieId);
-            $watchedMovies->push($movieDetails);
-        }
-
-        $watchedTVSeries = collect([]);
-        foreach ($watchedTVSeriesIds as $tvSeriesId) {
-            $tvSeriesDetails = $this->tmdbApiService->getTVSeriesDetails($tvSeriesId);
-            $watchedTVSeries->push($tvSeriesDetails);
-        }
-
-        $watchlistMovies = collect([]);
-        foreach ($watchlistMoviesIds as $movieId) {
-            $movieDetails = $this->tmdbApiService->getMovieDetails($movieId);
-            $watchlistMovies->push($movieDetails);
-        }
-
-        $watchlistTVSeries = collect([]);
-        foreach ($watchlistTVSeriesIds as $tvSeriesId) {
-            $tvSeriesDetails = $this->tmdbApiService->getTVSeriesDetails($tvSeriesId);
-            $watchlistTVSeries->push($tvSeriesDetails);
-        }
-
-        $followedActors = collect([]);
-        foreach ($followedActorsIds as $actorId) {
-            $actorDetails = $this->tmdbApiService->getPersonDetails($actorId);
-            $followedActors->push($actorDetails);
-        }
+        $watchedMovies = $this->getMovies($watchedMoviesIds);
+        $watchedTVSeries = $this->getTVSeries($watchedTVSeriesIds);
+        $watchlistMovies = $this->getMovies($watchlistMoviesIds);
+        $watchlistTVSeries = $this->getTVSeries($watchlistTVSeriesIds);
+        $followedActors = $this->getFollowedActors($followedActorsIds);
 
         $allMovies = collect([]);
-        for ($i = 1; $i <= 1; $i++) {
-            $moviesPage = $this->tmdbApiService->getMovies();
-            $allMovies = $allMovies->merge($moviesPage['results']);
-        }
+        $moviesPage = $this->tmdbApiService->getMovies();
+        $allMovies = $allMovies->merge($moviesPage['results']);
 
         $allTVSeries = collect([]);
-        for ($i = 1; $i <= 1; $i++) {
-            $tvSeriesPage = $this->tmdbApiService->getTVSeries($i);
-            $allTVSeries = $allTVSeries->merge($tvSeriesPage['results']);
-        }
+        $tvSeriesPage = $this->tmdbApiService->getTVSeries();
+        $allTVSeries = $allTVSeries->merge($tvSeriesPage['results']);
 
-        $unwatchedMovies = $allMovies->reject(function ($movie) use ($watchedMovies, $watchlistMovies) {
-            return $watchedMovies->contains('id', $movie['id']) || $watchlistMovies->contains('id', $movie['id']);
-        });
-
-        $unwatchedTVSeries = $allTVSeries->reject(function ($tvSeries) use ($watchedTVSeries, $watchlistTVSeries) {
-            return $watchedTVSeries->contains('id', $tvSeries['id']) || $watchlistTVSeries->contains('id', $tvSeries['id']);
-        });
+        $unwatchedMovies = $this->getUnwatchedMovies($allMovies, $watchedMovies, $watchlistMovies);
+        $unwatchedTVSeries = $this->getUnwatchedTVSeries($allTVSeries, $watchedTVSeries, $watchlistTVSeries);
 
         $recommendedMovies = $unwatchedMovies;
         $recommendedTVSeries = $unwatchedTVSeries;
 
         $recommendations = $recommendedMovies->merge($recommendedTVSeries)->toArray();
+
         return view('users.recommendations', compact('recommendations'));
+    }
+
+    private function getMovies($movieIds)
+    {
+        $movies = collect([]);
+
+        foreach ($movieIds as $movieId) {
+            $movieDetails = $this->tmdbApiService->getMovieDetails($movieId);
+            $movies->push($movieDetails);
+        }
+
+        return $movies;
+    }
+
+    private function getTVSeries($tvSeriesIds)
+    {
+        $tvSeries = collect([]);
+
+        foreach ($tvSeriesIds as $tvSeriesId) {
+            $tvSeriesDetails = $this->tmdbApiService->getTVSeriesDetails($tvSeriesId);
+            $tvSeries->push($tvSeriesDetails);
+        }
+
+        return $tvSeries;
+    }
+
+    private function getWatchedMoviesIds($userId)
+    {
+        return DB::table('user_watcheds')->where('user_id', $userId)->pluck('movie_id')->toArray();
+    }
+
+    private function getWatchedTVSeriesIds($userId)
+    {
+        return DB::table('user_watcheds')->where('user_id', $userId)->pluck('tv_id')->toArray();
+    }
+
+    private function getWatchlistMoviesIds($userId)
+    {
+        return DB::table('user_watchlists')->where('user_id', $userId)->pluck('movie_id')->toArray();
+    }
+
+    private function getWatchlistTVSeriesIds($userId)
+    {
+        return DB::table('user_watchlists')->where('user_id', $userId)->pluck('tv_id')->toArray();
+    }
+
+    private function getFollowedActorsIds($userId)
+    {
+        return DB::table('user_follows')->where('user_id', $userId)->pluck('person_id')->toArray();
+    }
+
+    private function getFollowedActors($actorIds)
+    {
+        $actors = collect([]);
+
+        foreach ($actorIds as $actorId) {
+            $actorDetails = $this->tmdbApiService->getPersonDetails($actorId);
+            $actors->push($actorDetails);
+        }
+
+        return $actors;
+    }
+
+    private function getUnwatchedMovies($allMovies, $watchedMovies, $watchlistMovies)
+    {
+        return $allMovies->reject(function ($movie) use ($watchedMovies, $watchlistMovies) {
+            return $watchedMovies->contains('id', $movie['id']) || $watchlistMovies->contains('id', $movie['id']);
+        });
+    }
+
+    private function getUnwatchedTVSeries($allTVSeries, $watchedTVSeries, $watchlistTVSeries)
+    {
+        return $allTVSeries->reject(function ($tvSeries) use ($watchedTVSeries, $watchlistTVSeries) {
+            return $watchedTVSeries->contains('id', $tvSeries['id']) || $watchlistTVSeries->contains('id', $tvSeries['id']);
+        });
     }
 }
 
